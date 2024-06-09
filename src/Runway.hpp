@@ -9,9 +9,9 @@ class Runway: public Resources{
         string name;
     public:
         Runway();
-        Runaway(string name);
+        Runway(string name, int id);
         string getName();
         void setName(string name);
 
-}
+};
 #endif

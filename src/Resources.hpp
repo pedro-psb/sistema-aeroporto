@@ -8,5 +8,5 @@ class Resources{
         Resources(int id);
         int getId();
         void setId(int id);
-}
+};
 #endif

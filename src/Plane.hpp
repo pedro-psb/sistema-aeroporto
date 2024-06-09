@@ -15,5 +15,5 @@ class Plane: public Resources{
         void setCapacity(int capacity);
         void setPlaneType(int planeType);
 
-}
+};
 #endif

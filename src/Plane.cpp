@@ -1,8 +1,8 @@
-#include "Plane.cpp"
+#include "Plane.hpp"
 Plane::Plane(){
 
 }
-Plane::Plane(int capacity, int planeType, int id):Resources(id), capacity(capacity),planeType(planeType){
+Plane::Plane(int capacity, int planeType, int id):capacity(capacity),planeType(planeType),Resources(id){
 
 }
 int Plane::getCapacity(){
@@ -12,8 +12,8 @@ void Plane::setCapacity(int cap){
     capacity=cap;
 }
 int Plane::getPlaneType(){
-    return PlaneType;
+    return planeType;
 }
-int Plane::setPlaneType(int pt){
+void Plane::setPlaneType(int pt){
     planeType=pt;
 }
