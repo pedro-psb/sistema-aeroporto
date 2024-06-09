@@ -2,16 +2,20 @@
 using std::string;
 
 Ticket::Ticket(
-	Passenger* passenger,
+	Client* client,
  	Flight* flight,
-	float price
-	// EnumSeat seat, 
+	float price,
+	EnumSeat seatType
 	):
-	passenger(passenger),
+	client(client),
 	flight(flight),
-	price(price)
-	// seat(seat),
+	price(price),
+	seatType(seatType)
 {
+}
+
+EnumSeat Ticket::getSeatType()  {
+    return seatType;
 }
 
 // Ticket::CalculatePrice(EnumSeat seat, float distance)

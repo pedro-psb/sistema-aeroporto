@@ -1,0 +1,3 @@
+
+class Resource;
+class ResourceType;

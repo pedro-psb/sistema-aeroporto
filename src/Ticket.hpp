@@ -1,26 +1,28 @@
 #ifndef TICKET
 #define TICKET
 #include <string>
-#include "Passenger.hpp"
+#include "Client.hpp"
 #include "Flight.hpp"
+#include "Enum/EnumSeat.hpp" 
 using std::string;
 
 class Ticket
 {
 	private:
 		int id;
-		Passenger* passenger;
+		Client* client;
 		Flight* flight;
 		float price;
-		// EnumSeat: seat;
+		EnumSeat seatType;
 		
     public:
         Ticket(
-			Passenger* passenger, 
+			Client* client, 
 			Flight* flight, 
-			float price
-			// EnumSeat serat, 
+			float price,
+			EnumSeat seatType
 		);
+		EnumSeat getSeatType();
         // float CalculatePrice(EnumSeat seat, float distance);
 };
 #endif

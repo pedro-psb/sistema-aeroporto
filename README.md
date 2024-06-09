@@ -9,32 +9,42 @@ Grupo:
 
 ## Uso
 
-O programa foi desenhado em torno de casos de teste, portanto não há uma interface para uso direto do programa.
+O programa é uma biblioteca desenvolvida em torno de certos requisitos.
 
 Para compilar o programa e rodar os testes, você precisará:
-- ter instalado no sistema o programa [make](https://www.gnu.org/software/make/).
-- ter instalado no sistema o compilaodr g++.
+- instalar o [make](https://www.gnu.org/software/make/) e cmake.
+- instalar o compilaodr g++.
 - clonar o repositório localmente.
 
 Com esses requisitos satisfeitos, basta rodar:
 
 ```bash
-# roda todos os testes
-make tests
+# veja os comandos disponiveis
+make
 
-# roda os testes funcionais
-make functional_tests
+# compila a biblioteca e os testes em ./build
+make build
 
-# roda os testes unitarios
-make unit_tests
+# roda todos os testes compilados
+./run_test.sh
+
+# se houver problemas de permissão, conserte antes de tentar novamente
+chmod +x run_test.sh
+
+# ou rode os testes individualmente
+make list_tests
+./build/end_to_end_test
 ```
 
 ## Guia de Estilo
 
 ```cpp
-class NomeDeClasse {}; // 
-int NomeDeMetodo {}; //
-
+// Arquivo.hpp
+class NomeDeClasse {
+    public:
+        int nomeDeVariavel;
+        void nomeDeMetodo(string nomeDeParametro);
+}; 
 ```
 
 ## Design
