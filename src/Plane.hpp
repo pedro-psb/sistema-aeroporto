@@ -1,19 +1,19 @@
 #ifndef PLANE
 #define PLANE
 #include "Resources.hpp"
-//#include "EnumPlaneType.hpp"
+#include "EnumFlight.hpp" 
 
 class Plane: public Resources{
     private:
         int capacity;
-        int planeType;
+        EnumFlight planeType;
     public:
         Plane();
-        Plane(int capacity, int planeType, int id);
+        Plane(int capacity, EnumFlight planeType, int id);
         int getCapacity();
-        int getPlaneType();
+        EnumFlight getPlaneType();
         void setCapacity(int capacity);
-        void setPlaneType(int planeType);
+        void setPlaneType(EnumFlight planeType);
 
 };
 #endif

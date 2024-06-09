@@ -15,6 +15,12 @@
 #include "Pilot.hpp"
 #include "EnumFlight.hpp"
 #include "EnumSeat.hpp"
+#include "Resources.hpp"
+#include "Plane.hpp"
+#include "Runway.hpp"
+#include "FlightSchedule.hpp"
+#include "BoardingCrew.hpp"
+
 
 
 #endif // INCLUDES_HPP

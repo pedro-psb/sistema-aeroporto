@@ -1,21 +1,30 @@
 #ifndef BOARDINGCREW
 #define BOARDINGCREW
+
 #include "Resources.hpp"
 #include "Steward.hpp"
 #include "Pilot.hpp"
-class BoardingCrew: public Resources{
+
+class BoardingCrew: public Resources {
     private:
         Pilot MainPilot;
         Pilot Copilot;
-        Steward Stewards[];
+        Steward* Stewards;
+        int numStewards;
+
     public:
         BoardingCrew();
-        BoardingCrew(Pilot MainPilot, Pilot Copilot, Steward* Stewards);
+        BoardingCrew(Pilot MainPilot, Pilot Copilot, Steward* Stewards, int numStewards);
+        ~BoardingCrew();
+
         Pilot getMainPilot();
         Pilot getCopilot();
-        Steward getStewards();
+        Steward* getStewards();
+        int getNumStewards();
+
         void setMainPilot(Pilot MainPilot);
         void setCopilot(Pilot Copilot);
-        void setStewards(Steward* Stewards);
+        void setStewards(Steward* Stewards, int numStewards);
 };
+
 #endif

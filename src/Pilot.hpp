@@ -9,6 +9,7 @@ class Pilot: public Person
         int license;
 
     public:
+        Pilot();
         Pilot(string name, string cpf, int license);
 
 };

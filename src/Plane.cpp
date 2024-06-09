@@ -2,7 +2,7 @@
 Plane::Plane(){
 
 }
-Plane::Plane(int capacity, int planeType, int id):capacity(capacity),planeType(planeType),Resources(id){
+Plane::Plane(int capacity, EnumFlight planeType, int id):capacity(capacity),planeType(planeType),Resources(id){
 
 }
 int Plane::getCapacity(){
@@ -11,9 +11,9 @@ int Plane::getCapacity(){
 void Plane::setCapacity(int cap){
     capacity=cap;
 }
-int Plane::getPlaneType(){
+EnumFlight Plane::getPlaneType(){
     return planeType;
 }
-void Plane::setPlaneType(int pt){
+void Plane::setPlaneType(EnumFlight pt){
     planeType=pt;
 }
