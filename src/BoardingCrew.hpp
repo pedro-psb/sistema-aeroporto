@@ -1,5 +1,5 @@
-#ifndef PLANE
-#define PLANE
+#ifndef BOARDINGCREW
+#define BOARDINGCREW
 #include "Resources.hpp"
 #include "Steward.hpp"
 //#include "Pilot.hpp"
