@@ -4,7 +4,9 @@ class Resources{
     protected:
         int id;
     public:
-        getId();
-        setId();
+        Resources();
+        Resources(int id);
+        int getId();
+        void setId(int id);
 }
 #endif

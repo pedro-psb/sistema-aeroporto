@@ -8,10 +8,12 @@ class Plane: public Resources{
         int capacity;
         int planeType;
     public:
+        Plane();
+        Plane(int capacity, int planeType, int id);
         int getCapacity();
         int getPlaneType();
-        int setCapacity();
-        int setPlaneType();
+        void setCapacity(int capacity);
+        void setPlaneType(int planeType);
 
 }
 #endif

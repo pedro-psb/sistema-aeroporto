@@ -8,7 +8,7 @@ class Runway: public Resources{
         string name;
     public:
         string getName();
-        string setName();
+        void setName(string name);
 
 }
 #endif
