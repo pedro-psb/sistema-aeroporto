@@ -1,12 +1,4 @@
-#include <string>
-#include <iostream>
-#include "Flight.hpp"
-#include "Person.hpp"
-#include "Steward.hpp"
-#include "Ticket.hpp"
-#include "DateTime.hpp"
-#include "Destination.hpp"
-#include "Passenger.hpp"
+#include "includes.hpp"
 
 using std::cout;
 using std::endl;
