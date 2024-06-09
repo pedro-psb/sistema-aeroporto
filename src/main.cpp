@@ -4,36 +4,6 @@ using std::cout;
 using std::endl;
 using std::string;
 
-const char* toString(EnumFlight flight) {
-    switch(flight) {
-        case EnumFlight::MILITAR: return "Militar";
-        case EnumFlight::CARGA: return "Carga";
-        case EnumFlight::COMERCIAL: return "Comercial";
-        case EnumFlight::EXECUTIVO: return "Executivo";
-        default: return "Unknown";
-    }
-}
-
-const char* toString(EnumSeat flight) {
-    switch(flight) {
-        case EnumSeat::ECONOMICA: return "Economica";
-        case EnumSeat::ECONOMICA_PREMIUM: return "Economica Premiun";
-        case EnumSeat::EXECUTIVA: return "Executiva";
-        case EnumSeat::PRIMEIRA_CLASSE: return "Primeira Classe";
-        default: return "Unknown";
-    }
-}
-
-const double getValue(EnumSeat flight) {
-    switch(flight) {
-        case EnumSeat::ECONOMICA: return 1500;
-        case EnumSeat::ECONOMICA_PREMIUM: return 1800;
-        case EnumSeat::EXECUTIVA: return 2000.50;
-        case EnumSeat::PRIMEIRA_CLASSE: return 2450.70;
-        default: return 0;
-    }
-}
-
 int main()
 {
     //Testando id 
