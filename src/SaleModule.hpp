@@ -1,6 +1,9 @@
 #include "Common.hpp"
 #include "People.hpp"
 
+#ifndef SALES_MOD
+#define SALES_MOD
+
 class SaleModule {
 public:
   /* Get next available Flight going to @Destination.
@@ -14,3 +17,5 @@ public:
   /* Cancel Ticket associated with Client and Flight. */
   void cancelTicket(Ticket ticket);
 };
+
+#endif

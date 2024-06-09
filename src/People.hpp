@@ -1,5 +1,8 @@
-class Person;
+#ifndef PEOPLE
+#define PEOPLE
 
-class Client;
+class Person {};
 
-class Client;
+class Client : public Person {};
+
+#endif
