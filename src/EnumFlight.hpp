@@ -8,4 +8,6 @@ enum class EnumFlight {
     EXECUTIVO
 };
 
+const char* toString(EnumFlight flight);
+
 #endif 

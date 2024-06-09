@@ -1,7 +1,7 @@
 #ifndef FLIGHT
 #define FLIGHT
 #include "DateTime.hpp"
-#include "Enum/EnumFlight.hpp" 
+#include "EnumFlight.hpp" 
 #include "Destination.hpp"
 using std::string;
 

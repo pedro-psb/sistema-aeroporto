@@ -3,7 +3,7 @@
 #include <string>
 #include "Client.hpp"
 #include "Flight.hpp"
-#include "Enum/EnumSeat.hpp" 
+#include "EnumSeat.hpp" 
 using std::string;
 
 class Ticket
