@@ -1,7 +1,7 @@
 #ifndef FLIGHT
 #define FLIGHT
 #include "DateTime.hpp"
-#include "Enum/EnumFlight.cpp" 
+#include "Enum/EnumFlight.hpp" 
 #include "Destination.hpp"
 using std::string;
 
@@ -13,22 +13,23 @@ class Flight
 		string originPlace;
 		DateTime* returnDate;
 		DateTime* exitDate;
+		EnumFlight flightType;
 		// AirPlane airPlane:
 		// RunWay runWay;
 		// AirCrew airCrew;
 		
     public:
-		EnumFlight flightType;
         Flight
         (
 			Destination* destination,
 			string OriginPlace,
 			DateTime* returnDate, 
 			DateTime* exitDate,
-			EnumFlight flight
+			EnumFlight flightType
 			// AirPlane airPlane
 			// RunWay runWay
 			// AirCrew airCrew
 		);
+		EnumFlight getFlightType();
 };
 #endif

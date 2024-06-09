@@ -3,7 +3,7 @@
 #include <string>
 #include "Client.hpp"
 #include "Flight.hpp"
-#include "Enum/EnumSeat.cpp" 
+#include "Enum/EnumSeat.hpp" 
 using std::string;
 
 class Ticket
@@ -22,6 +22,7 @@ class Ticket
 			float price,
 			EnumSeat seatType
 		);
+		EnumSeat getSeatType();
         // float CalculatePrice(EnumSeat seat, float distance);
 };
 #endif

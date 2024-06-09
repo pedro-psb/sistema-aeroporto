@@ -23,5 +23,9 @@ Flight::Flight
 	// runWay (runWay)
 	// airCrew (airCrew)
 {}
+
+EnumFlight Flight::getFlightType()  {
+    return flightType;
+}
 	
 

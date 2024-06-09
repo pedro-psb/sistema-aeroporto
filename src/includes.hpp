@@ -12,8 +12,8 @@
 #include "DateTime.hpp"
 #include "Destination.hpp"
 #include "Client.hpp"
-#include "Enum/EnumFlight.cpp"
-#include "Enum/EnumSeat.cpp"
+#include "Enum/EnumFlight.hpp"
+#include "Enum/EnumSeat.hpp"
 
 
 #endif // INCLUDES_HPP
