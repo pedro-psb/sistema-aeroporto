@@ -30,6 +30,7 @@ class Flight
 			// RunWay runWay
 			// AirCrew airCrew
 		);
+		Flight();
 		EnumFlight getFlightType();
 };
 #endif

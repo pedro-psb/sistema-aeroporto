@@ -3,6 +3,8 @@
 #include <string>
 using std::string;
 
+Flight::Flight(){};
+
 Flight::Flight
 	(
 		Destination* destination,
