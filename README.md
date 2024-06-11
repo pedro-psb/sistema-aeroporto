@@ -7,33 +7,45 @@ Grupo:
 - Glaucus
 - Pedro Pessoa
 
-## Uso
+## Testando
+
+### Basico
 
 O programa é uma biblioteca desenvolvida em torno de certos requisitos.
 
 Para compilar o programa e rodar os testes, você precisará:
-- instalar o [make](https://www.gnu.org/software/make/) e cmake.
+- instalar o [cmake](https://cmake.org/download/).
 - instalar o compilaodr g++.
-- clonar o repositório localmente.
 
-Com esses requisitos satisfeitos, basta rodar:
+Então, basta clonar o repositório e mudar para a pasta.
 
 ```bash
-# veja os comandos disponiveis
+# especifica e configura o diretorio de build em ./build
+cmake -B build
+
+# muda para diretorio com Makefile gerado
+cd build
+
+# faz o build da biblioteca e dos testes
 make
 
-# compila a biblioteca e os testes em ./build
-make build
+# roda todos os testes
+ctest
 
-# roda todos os testes compilados
-./run_test.sh
+# execute um teste diretamente (mesmo nome que os cpps em ./tests):
+./flight_module_test
+```
 
-# se houver problemas de permissão, conserte antes de tentar novamente
-chmod +x run_test.sh
+### Opcoes Uteis
 
-# ou rode os testes individualmente
-make list_tests
-./build/end_to_end_test
+```bash
+# para rodar da raiz do repositorio, especifique a pasta build:
+ctest --test-dir build
+
+# opcoes do ctest (estando na pasta build):
+ctest --show-only
+ctest --rerun-failed --output-on-failure
+ctest --rerun-failed --output-on-failure
 ```
 
 ## Guia de Estilo

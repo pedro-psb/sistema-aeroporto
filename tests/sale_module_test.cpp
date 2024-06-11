@@ -1,7 +1,7 @@
 #include "../lib/catch.hpp"
 #include "../src/SaleModule.hpp"
 
-TEST_CASE("Given a fresh SaleModule") {
+TEST_CASE("Given a fresh SaleModule", "[functional]") {
   SaleModule saleMod = SaleModule();
 
   SECTION("When there is a Flight available for Destiny."){};

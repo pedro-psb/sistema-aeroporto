@@ -5,10 +5,6 @@ Airport::Airport(string name) {
   this->name = name;
 }
 
-int Airport::getId(){
-  return this->id;
-}
+int Airport::getId() { return this->id; }
 
-string Airport::getName(){
-  return this->name;
-}
+string Airport::getName() { return this->name; }
