@@ -1,10 +1,10 @@
 #ifndef RUNWAY
 #define RUNWAY 
-#include "Resources.hpp"
+#include "Resource.hpp"
 #include <string>
 using std::string;
 
-class Runway: public Resources{
+class Runway: public Resource{
     private:
         string name;
     public:

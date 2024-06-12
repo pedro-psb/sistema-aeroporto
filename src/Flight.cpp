@@ -11,19 +11,19 @@ Flight::Flight
 		string originPlace,
 		DateTime* returnDate, 
 		DateTime* exitDate,
+		Plane* plane,
+		Runway* runway,
+		BoardingCrew* crew,
 		EnumFlight flightType
-		// AirPlane airPlane, 
-		// RunWay runWay, 
-		// AirCrew airCrew
 	):
 	destination(destination),
 	originPlace(originPlace),
 	returnDate(returnDate), 
 	exitDate(exitDate),
+	plane(plane),
+	runway(runway),
+	crew(crew),
 	flightType(flightType)
-	// airPlane (airPlane)
-	// runWay (runWay)
-	// airCrew (airCrew)
 {}
 
 EnumFlight Flight::getFlightType()  {

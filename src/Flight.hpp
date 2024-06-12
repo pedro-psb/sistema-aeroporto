@@ -3,6 +3,9 @@
 #include "DateTime.hpp"
 #include "EnumFlight.hpp" 
 #include "Destination.hpp"
+#include "Plane.hpp"
+#include "Runway.hpp"
+#include "BoardingCrew.hpp"
 using std::string;
 
 class Flight
@@ -13,22 +16,22 @@ class Flight
 		string originPlace;
 		DateTime* returnDate;
 		DateTime* exitDate;
+		Plane* plane;
+		Runway* runway;
+		BoardingCrew* crew;
 		EnumFlight flightType;
-		// AirPlane airPlane:
-		// RunWay runWay;
-		// AirCrew airCrew;
 		
     public:
         Flight
         (
 			Destination* destination,
-			string OriginPlace,
+			string originPlace,
 			DateTime* returnDate, 
 			DateTime* exitDate,
+			Plane* plane,
+			Runway* runWay,
+			BoardingCrew* crew,
 			EnumFlight flightType
-			// AirPlane airPlane
-			// RunWay runWay
-			// AirCrew airCrew
 		);
 		Flight();
 		EnumFlight getFlightType();
