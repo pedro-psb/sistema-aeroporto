@@ -10,14 +10,14 @@ using std::string, std::cout, std::endl;
 
 TEST_CASE("Given a fresh Mock ResourceModule", "[functional]") {
   ResourceModuleMock *resourceModuleMock = new ResourceModuleMock();
-  auto pilot = resourceModuleMock->getResource(ResourceType::Pilot, DateTime());
+  auto pilot = resourceModuleMock->getResource(Pilot::Pilot, DateTime());
 
   SECTION("When enabling the mock raise-flag") {
     resourceModuleMock->getResourceRaise = true;
 
     THEN("An throw is thrown error") {
       REQUIRE_THROWS_WITH(
-          resourceModuleMock->getResource(ResourceType::Pilot, DateTime()),
+          resourceModuleMock->getResource(Pilot::Pilot, DateTime()),
           CantCreateResourceErrorMsg);
     }
   }

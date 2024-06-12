@@ -1,8 +1,13 @@
 #include <vector>
 
-#include "Common.hpp"
-#include "People.hpp"
 #include "Resource.hpp"
+#include "Pilot.hpp"
+#include "Plane.hpp"
+#include "Steward.hpp"
+#include "Runway.hpp"
+#include "Client.hpp"
+#include "Flight.hpp"
+#include "Flight.hpp"
 
 using std::vector;
 
@@ -37,9 +42,9 @@ public:
   /* Initializer */
   ResourceModule();
 
-  /* Try to get a Resource of @ResourceType for a given @dateTime
+  /* Try to get a Resource of @Resource for a given @dateTime
    * Raises "ResourceNotAvailableError" if its not available at that time */
-  virtual Resource *getResource(ResourceType resourceType, DateTime datime);
+  virtual Resource *getResource(Resource resource, DateTime datime);
 
   /* Free the @resource if its being used during dateTime.
   /* Ignore if the @resource was not begin used at that time. */

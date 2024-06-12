@@ -11,6 +11,7 @@ class Pilot: public Person
     public:
         Pilot();
         Pilot(string name, string cpf, int license);
+        int getId() const;
 
 };
 #endif

@@ -1,11 +1,11 @@
 #ifndef BOARDINGCREW
 #define BOARDINGCREW
 
-#include "Resources.hpp"
+#include "Resource.hpp"
 #include "Steward.hpp"
 #include "Pilot.hpp"
 
-class BoardingCrew: public Resources {
+class BoardingCrew: public Resource {
     private:
         Pilot MainPilot;
         Pilot Copilot;

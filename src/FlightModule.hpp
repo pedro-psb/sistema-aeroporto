@@ -1,5 +1,4 @@
-#include "Common.hpp"
-#include "People.hpp"
+#include "Client.hpp"
 #include "ResourceModule.hpp"
 
 #ifndef FLIGHT_MOD

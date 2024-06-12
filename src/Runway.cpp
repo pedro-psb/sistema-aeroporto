@@ -4,7 +4,7 @@ using std::string;
 Runway::Runway(){
 
 }
-Runway::Runway(string name, int id):Resources(id), name(name){
+Runway::Runway(string name): Resource(), name(name){
 
 }
 string Runway::getName(){
