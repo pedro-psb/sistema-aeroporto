@@ -5,8 +5,11 @@ using std::string;
 
 class Person
 {
-    private:
+    protected:
 		int id;
+
+    private:
+		static int currentId;
         string name;
         string cpf;
 

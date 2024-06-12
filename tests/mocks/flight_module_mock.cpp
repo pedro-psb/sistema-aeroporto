@@ -11,19 +11,19 @@ ResourceModuleMock::ResourceModuleMock() {
   int PlaneId = 0;
   int RunawayId = 0;
   mockResourceMap = {
-      {ResourceType::Pilot, {new Pilot()}},
-      {ResourceType::Plane, {new Plane(), new Plane()}},
-      {ResourceType::Steward, {new Steward(), new Steward}},
-      {ResourceType::Runaway, {new Runaway(), new Runaway()}},
+      {Pilot::Pilot, {new Pilot()}},
+      {Plane::Plane, {new Plane(), new Plane()}},
+      {Steward::Steward, {new Steward(), new Steward}},
+      {Runway::Runway, {new Runway(), new Runway()}},
   };
   getResourceRaise = false;
 }
 
-Resource *ResourceModuleMock::getResource(ResourceType resourceType,
+Resource *ResourceModuleMock::getResource(Resource resource,
                                           DateTime dateTime) {
   cout << "Mock getResource being called" << endl;
   if (this->getResourceRaise == true) {
     throw CantCreateResourceErrorMsg;
   }
-  return this->mockResourceMap[resourceType][0];
+  return this->mockResourceMap[resource][0];
 };

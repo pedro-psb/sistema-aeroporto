@@ -3,12 +3,13 @@
 using std::string;
 
 class Airport {
-private:
-  int id;
-  string name;
+	private:
+		int id;
+		static int currentId;
+		string name;
 
-public:
-  Airport(string name);
-  int getId();
-  string getName();
+	public:
+		Airport(string name);
+		int getId();
+		string getName();
 };

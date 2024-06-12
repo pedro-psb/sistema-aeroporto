@@ -1,17 +1,16 @@
 #ifndef RESOURCE
 #define RESOURCE
 
-enum class ResourceType {
-  Plane,
-  Pilot,
-  Steward,
-  Runaway,
+class Resource{
+    protected:
+        int id;
+
+    private:
+        static int currentId;
+        
+    public:
+        Resource();
+        int getId();
+        void setId(int id);
 };
-
-class Resource {};
-class Pilot : public Resource {};
-class Plane : public Resource {};
-class Steward : public Resource {};
-class Runaway : public Resource {};
-
 #endif
