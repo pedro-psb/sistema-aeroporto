@@ -9,7 +9,6 @@ class Steward: public Person
         string gender;
 
     public:
-        Steward();
         Steward(string name, string cpf, string gender);
 
 };

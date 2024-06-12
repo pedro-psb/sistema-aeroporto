@@ -9,8 +9,7 @@ class Plane: public Resource{
         EnumFlight planeType;
         
     public:
-        Plane();
-        Plane(int capacity, EnumFlight planeType, int id);
+        Plane(int capacity, EnumFlight planeType);
         int getCapacity();
         EnumFlight getPlaneType();
         void setCapacity(int capacity);

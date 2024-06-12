@@ -12,14 +12,15 @@ class Flight
 {
 	private:
 		int id;
+		static int currentId;
 		Destination* destination;
 		string originPlace;
 		DateTime* returnDate;
 		DateTime* exitDate;
+		EnumFlight flightType;
 		Plane* plane;
 		Runway* runway;
 		BoardingCrew* crew;
-		EnumFlight flightType;
 		
     public:
         Flight
@@ -28,12 +29,12 @@ class Flight
 			string originPlace,
 			DateTime* returnDate, 
 			DateTime* exitDate,
+			EnumFlight flightType,
 			Plane* plane,
 			Runway* runWay,
-			BoardingCrew* crew,
-			EnumFlight flightType
+			BoardingCrew* crew
 		);
-		Flight();
+		Flight ();
 		EnumFlight getFlightType();
 };
 #endif

@@ -1,7 +1,9 @@
 #include "Airport.hpp"
 
+int Airport::currentId = 0;
+
 Airport::Airport(string name) {
-  this->id = 0;
+  this->id = currentId++;
   this->name = name;
 }
 

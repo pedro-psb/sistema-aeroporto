@@ -4,10 +4,12 @@
 class Resource{
     protected:
         int id;
+
+    private:
+        static int currentId;
         
     public:
         Resource();
-        Resource(int id);
         int getId();
         void setId(int id);
 };

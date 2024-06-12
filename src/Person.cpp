@@ -1,8 +1,9 @@
 #include "Person.hpp"
-Person::Person(){}
+
+int Person::currentId = 0;
 
 Person::Person(string name, string cpf)
-    :name(name), cpf(cpf)
+    :name(name), cpf(cpf), id(currentId++)
 {
     
 }

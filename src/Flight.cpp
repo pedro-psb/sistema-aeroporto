@@ -3,6 +3,8 @@
 #include <string>
 using std::string;
 
+int Flight::currentId = 0;
+
 Flight::Flight(){};
 
 Flight::Flight
@@ -11,19 +13,20 @@ Flight::Flight
 		string originPlace,
 		DateTime* returnDate, 
 		DateTime* exitDate,
+		EnumFlight flightType,
 		Plane* plane,
 		Runway* runway,
-		BoardingCrew* crew,
-		EnumFlight flightType
+		BoardingCrew* crew
 	):
 	destination(destination),
 	originPlace(originPlace),
 	returnDate(returnDate), 
 	exitDate(exitDate),
+	flightType(flightType),
 	plane(plane),
 	runway(runway),
 	crew(crew),
-	flightType(flightType)
+	id(currentId++)
 {}
 
 EnumFlight Flight::getFlightType()  {

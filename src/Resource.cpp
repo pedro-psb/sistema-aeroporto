@@ -1,7 +1,9 @@
 #include "Resource.hpp"
-Resource::Resource(){};
+int Resource::currentId = 0;
 
-Resource::Resource(int id):id(id){};
+Resource::Resource()
+    :id(currentId++)
+{};
 
 int Resource::getId(){
     return id;
