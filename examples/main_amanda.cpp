@@ -17,13 +17,14 @@ int main() {
     // Testando Enums
     DateTime *date1 = new DateTime(2024, 6, 9, 15, 18, 00);
     DateTime *date2 = new DateTime(2024, 7, 9, 15, 18, 00);
-    Flight *flight1 = new Flight(d1, "Sao Paulo", date1, date2, EnumFlight::COMERCIAL);
+    // AQUI: construtor com 5 argumentos, precisa passar runaway, steward, etc
+    // Flight *flight1 = new Flight(d1, "Sao Paulo", date1, date2, EnumFlight::COMERCIAL);
     Client *client1 = new Client("Amanda Fiaux", "12365478978");
-    Ticket *ticket = new Ticket(client1, flight1, 1800.50, EnumSeat::ECONOMICA);
+    // Ticket *ticket = new Ticket(client1, flight1, 1800.50, EnumSeat::ECONOMICA);
 
-    cout << "\nFlight Type: " << toString(flight1->getFlightType()) << endl;
-    cout << "\nTicket Type: " << toString(ticket->getSeatType()) << endl;
-    cout << "\nTicket Value: " << getValue(ticket->getSeatType()) << endl;
+    // cout << "\nFlight Type: " << toString(flight1->getFlightType()) << endl;
+    // cout << "\nTicket Type: " << toString(ticket->getSeatType()) << endl;
+    // cout << "\nTicket Value: " << getValue(ticket->getSeatType()) << endl;
 
   return 0;
 }
