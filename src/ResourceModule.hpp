@@ -19,7 +19,19 @@ private:
 class ResourceModule {
 private:
   /* The "Source Of Truth" table of the saved Flights. */
-  vector<Flight> flightTable;
+  FlightSchedule flightSchedule;
+
+  /* The set of resources available. */
+  vector<Steward*> stewardSet;
+
+  /* The set of planes available. */
+  vector<Plane*> planeSet;
+
+  /* The set of pilots available. */
+  vector<Pilot*> pilotSet;
+
+  /* The set of runaways available. */
+  vector<Runaway*> runawaySet;
 
 public:
   /* Initializer */

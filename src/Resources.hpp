@@ -1,12 +1,16 @@
 #ifndef RESOURCES
 #define RESOURCES
+
 class Resources{
     protected:
         int id;
     public:
+        /* Initialize a resource.
+         * Should set an set an incremental id, so each Resrouce
+         * have a unique identifier. */
         Resources();
-        Resources(int id);
+
+        /* Get the unique id of a Resource */
         int getId();
-        void setId(int id);
 };
 #endif
