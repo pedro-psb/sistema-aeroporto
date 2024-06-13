@@ -9,7 +9,7 @@ class DateTime
 		int year;
 		int month;
 		int day;
-		int houns;
+		int hours;
 		int minutes;
 		int seconds;
 		
@@ -19,9 +19,17 @@ class DateTime
 			int year,
 			int month,
 			int day,
-			int houns,
+			int hours,
 			int minutes,
 			int seconds
 		);
+		
+		int getYear();
+		int getMonth();
+		int getDay();
+		int getHours();
+		int getMinutes();
+		int getSeconds();
+		string toString();
 };
 #endif

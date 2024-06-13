@@ -1,5 +1,7 @@
 #ifndef ENUM_FLIGHT
 #define ENUM_FLIGHT
+#include <string>
+using std::string;
 
 enum class EnumFlight {
     MILITAR,
@@ -8,6 +10,7 @@ enum class EnumFlight {
     EXECUTIVO
 };
 
-const char* toString(EnumFlight flight);
+string toString(EnumFlight flight);
+const double getValue(EnumFlight seat);
 
 #endif 

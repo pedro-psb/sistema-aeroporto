@@ -2,8 +2,9 @@
 Steward::Steward(){}
 
 Steward::Steward(string name, string cpf, string gender):
-    Person(name, cpf), gender(gender)
-{
-    
+    Person(name, cpf), gender(gender){
 }
     
+int Steward::getId(){
+    return id;
+}

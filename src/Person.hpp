@@ -7,11 +7,12 @@ class Person
 {
     protected:
 		int id;
+        string name;
+        string cpf;
+        virtual int getId() = 0;
 
     private:
 		static int currentId;
-        string name;
-        string cpf;
 
     public:
         Person();

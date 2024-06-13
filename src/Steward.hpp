@@ -11,6 +11,6 @@ class Steward: public Person
     public:
         Steward();
         Steward(string name, string cpf, string gender);
-
+        int getId() override;
 };
 #endif
