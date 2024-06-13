@@ -17,7 +17,7 @@ FlightModule::FlightModule(ResourceModule *resourceModule) {
 
 Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, Destination* destination, EnumFlight flightType) {
 
-    //Cria data de retorno baseado em numeros aleatorios, mas em menos de 5 dias
+    //Create return date based on random numbers, but in less than 5 days
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     DateTime *retuntDate = new DateTime(
         departureDate->getYear(), 
@@ -62,20 +62,21 @@ void FlightModule::cancelFlight(Flight flight) { throw 1; };
 Ticket *FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 
     //TODO: Antes de chamar essa fução, verificar se o avião dentro dentes voo ainda tem espaço para mais clientes
 
-    //Calcula preço da passagem
+    //Calculate ticket price
     EnumFlight flightType = flight->getFlightType();
-    Destination* destination = flight->getDestiantion();
+    Destination* destination = flight->getDestination();
     float distace = destination->getDistance();
     double priceFlightType = getValue(flightType);
     double priceSeatType = getValue(seatType);
     double price = priceFlightType * distace + priceSeatType;
 
-    //Cria a passagem e vincula ao cliente e ao vôo
-    Ticket* ticket = new Ticket(client, flight, price, seatType);
+    //Create the ticket and link it to the customer and the flight
+    int idFligt = flight->getId();
+    Ticket* ticket = new Ticket(client, idFligt, price, seatType);
+    flight->addTicket(ticket);
     return ticket;
 };
 
-void FlightModule::removeClientFromFlight(Ticket* ticket) {
-    
-  
+void FlightModule::removeClientFromFlight(Ticket* ticket, Flight* flight) {
+    flight->removeTicket(ticket);
 };

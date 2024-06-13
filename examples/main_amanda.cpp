@@ -39,7 +39,7 @@ int main() {
 
     Flight *flight1 = new Flight(d1, "Sao Paulo", date1, date2, EnumFlight::COMERCIAL, plane1, runway, crew);
     Client *client1 = new Client("Amanda Fiaux", "12365478978");
-    Ticket *ticket = new Ticket(client1, flight1, 1800.50, EnumSeat::ECONOMICA);
+    Ticket *ticket = new Ticket(client1, flight1->getId(), 1800.50, EnumSeat::ECONOMICA);
 
     cout << "\nFlight Type: " << toString(flight1->getFlightType()) << endl;
     cout << "\nTicket Type: " << toString(ticket->getSeatType()) << endl;

@@ -5,7 +5,6 @@
 #ifndef FLIGHT_MOD
 #define FLIGHT_MOD
 
-#define CantCreateFlightErrorMsg "Cannot create flight."
 
 class FlightModule {
 private:
@@ -27,7 +26,7 @@ public:
   Ticket* addClientToFlight(Client* client, Flight* flight, EnumSeat seatType);
 
   /* Removes a @Client from a @Flight. */
-  void removeClientFromFlight(Ticket* ticket);
+  void removeClientFromFlight(Ticket* ticket, Flight* flight);
 };
 
 #endif

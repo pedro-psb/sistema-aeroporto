@@ -1,12 +1,16 @@
 #ifndef FLIGHT
 #define FLIGHT
+#include "Ticket.hpp"
 #include "DateTime.hpp"
 #include "EnumFlight.hpp" 
 #include "Destination.hpp"
 #include "Plane.hpp"
 #include "Runway.hpp"
 #include "BoardingCrew.hpp"
+#include <vector>
+
 using std::string;
+using std::vector;
 
 class Flight
 {
@@ -21,8 +25,10 @@ class Flight
 		Plane* plane;
 		Runway* runway;
 		BoardingCrew* crew;
+		vector<Ticket*> tickets;
 		
     public:
+		Flight();
         Flight
         (
 			Destination* destination,
@@ -34,9 +40,10 @@ class Flight
 			Runway* runWay,
 			BoardingCrew* crew
 		);
-		Flight();
+		int getId();
 		EnumFlight getFlightType();
-		Destination* getDestiantion();
-
+		Destination* getDestination();
+		void addTicket(Ticket* ticket);
+		void removeTicket(Ticket* ticket);
 };
 #endif

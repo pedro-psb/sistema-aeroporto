@@ -3,12 +3,12 @@ using std::string;
 
 Ticket::Ticket(
 	Client* client,
- 	Flight* flight,
+ 	int idFlight,
 	float price,
 	EnumSeat seatType
 	):
 	client(client),
-	flight(flight),
+	idFlight(idFlight),
 	price(price),
 	seatType(seatType)
 {

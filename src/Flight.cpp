@@ -1,6 +1,8 @@
 
 #include "Flight.hpp"
+#include "Errors.hpp"
 #include <string>
+#include <algorithm>
 using std::string;
 
 int Flight::currentId = 0;
@@ -26,15 +28,29 @@ Flight::Flight
 	plane(plane),
 	runway(runway),
 	crew(crew),
-	id(currentId++)
+	id(currentId++),
+	tickets()
 {}
+
+int Flight::getId(){
+	return id;
+}
 
 EnumFlight Flight::getFlightType()  {
     return flightType;
 }
 
-Destination* Flight::getDestiantion()  {
+Destination* Flight::getDestination()  {
     return destination;
+}
+
+void Flight::addTicket(Ticket* ticket){
+	tickets.push_back(ticket);
+}
+
+void Flight::removeTicket(Ticket* ticket){
+	auto  ticketRemove = std::remove(tickets.begin(), tickets.end(), ticket);
+	tickets.erase(ticketRemove, tickets.end());
 }
 	
 
