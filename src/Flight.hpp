@@ -50,6 +50,7 @@ class Flight
 		void removeTicket(Ticket* ticket);
 		void printTickets();
 		void printFlight();
+		void setStatus(EnumFlightStatus status);
 };
 #endif
 

@@ -19,7 +19,7 @@ public:
 
   /* Cancel a Flight.
    * Should cancel related Tickets and deallocate related Resources. */
-  void cancelFlight(Flight flight);
+  void cancelFlight(Flight* flight);
 
   /* Adds a @Client to a @Flight..
    * Raises "FlightFullError" if there is no available seats for the flight. */

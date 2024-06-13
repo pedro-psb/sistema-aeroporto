@@ -46,6 +46,9 @@ int main() {
     flightModule.removeClientFromFlight(client3, flight);
     flight->printTickets();
     flight->printFlight();
+    flightModule.cancelFlight(flight);
+    flight->printFlight();
+
 
 
 

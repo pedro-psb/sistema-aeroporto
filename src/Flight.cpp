@@ -80,3 +80,6 @@ void Flight::printFlight(){
 	cout << "\n"<< endl;
 }
 
+void Flight::setStatus(EnumFlightStatus status){
+	this->status = status;
+}

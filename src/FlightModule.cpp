@@ -51,10 +51,19 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
     return flight;
 };
 
-void FlightModule::cancelFlight(Flight flight) { throw 1; };
+void FlightModule::cancelFlight(Flight* flight) {
+    flight->setStatus(EnumFlightStatus::CANCELLED);
+
+    for (auto& ticket : flight->getTickets()) {
+        removeClientFromFlight(ticket->getClient(), flight);
+    }
+
+	cout << "----- Flight successfully cancelled! -----" << endl;
+
+};
 
 void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 
-    //TODO: Antes de chamar essa fução, verificar se o avião dentro dentes voo ainda tem espaço para mais clientes
+    //TODO: Antes de chamar essa fução, verificar se o avião dentro deste voo ainda tem espaço para mais clientes
 
     //Calculate ticket price
     EnumFlight flightType = flight->getFlightType();

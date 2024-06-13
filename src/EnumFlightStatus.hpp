@@ -7,7 +7,7 @@ enum class EnumFlightStatus {
     SCHEDULED,
     CONFIRMED,
     IN_FLIGHT,
-    OMPLETED,
+    COMPLETED,
     CANCELLED
 };
 
