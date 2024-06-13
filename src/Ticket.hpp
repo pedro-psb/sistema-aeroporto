@@ -22,5 +22,6 @@ class Ticket
 			EnumSeat seatType
 		);
 		EnumSeat getSeatType();
+		Client* getClient();
 };
 #endif

@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "../src/Client.hpp"
 #include "../src/DateTime.hpp"
@@ -15,5 +16,7 @@
 #include "../src/Pilot.hpp"
 #include "../src/Steward.hpp"
 #include "../src/Ticket.hpp"
+#include "../src/FlightModule.hpp"
+
 
 #endif // INCLUDES_HPP

@@ -1,6 +1,6 @@
 #include "Person.hpp"
 
-int Person::currentId = 0;
+int Person::currentId = 1;
 
 Person::Person(){}
 

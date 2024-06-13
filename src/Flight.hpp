@@ -41,9 +41,11 @@ class Flight
 			BoardingCrew* crew
 		);
 		int getId();
+		vector<Ticket*> getTickets();
 		EnumFlight getFlightType();
 		Destination* getDestination();
 		void addTicket(Ticket* ticket);
 		void removeTicket(Ticket* ticket);
+		void printFlight();
 };
 #endif

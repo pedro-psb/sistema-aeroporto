@@ -23,10 +23,10 @@ public:
 
   /* Adds a @Client to a @Flight..
    * Raises "FlightFullError" if there is no available seats for the flight. */
-  Ticket* addClientToFlight(Client* client, Flight* flight, EnumSeat seatType);
+  void addClientToFlight(Client* client, Flight* flight, EnumSeat seatType);
 
   /* Removes a @Client from a @Flight. */
-  void removeClientFromFlight(Ticket* ticket, Flight* flight);
+  void removeClientFromFlight(Client* client, Flight* flight);
 };
 
 #endif

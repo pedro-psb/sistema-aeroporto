@@ -8,11 +8,12 @@ class Destination
 		int id;
 		static int currentId;
 		double distance;
+		string name;
 		
     public:
-		string name;
         Destination(string name, double distance);
     	int getId();
     	double getDistance();
+    	string getName();
 };
 #endif

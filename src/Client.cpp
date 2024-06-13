@@ -9,4 +9,10 @@ int Client:: getPassport()
     return passport;
 }
 
+int Client:: getId()
+{
+    return id;
+}
+
+
     

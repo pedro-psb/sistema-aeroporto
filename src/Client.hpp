@@ -12,6 +12,7 @@ class Client: public Person
     public:
         Client(string name, string cpf);
         int getPassport();
+        int getId();
 };
 
 #endif

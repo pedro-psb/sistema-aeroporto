@@ -18,3 +18,7 @@ EnumSeat Ticket::getSeatType()  {
     return seatType;
 }
 
+Client* Ticket::getClient()  {
+    return client;
+}
+

@@ -1,11 +1,14 @@
 
 #include "Flight.hpp"
-#include "Errors.hpp"
 #include <string>
 #include <algorithm>
+#include <iostream>
+
+using std::cout;
+using std::endl;
 using std::string;
 
-int Flight::currentId = 0;
+int Flight::currentId = 1;
 
 Flight::Flight(){};
 
@@ -36,6 +39,11 @@ int Flight::getId(){
 	return id;
 }
 
+vector<Ticket*> Flight::getTickets(){
+	return tickets;
+}
+
+
 EnumFlight Flight::getFlightType()  {
     return flightType;
 }
@@ -51,6 +59,17 @@ void Flight::addTicket(Ticket* ticket){
 void Flight::removeTicket(Ticket* ticket){
 	auto  ticketRemove = std::remove(tickets.begin(), tickets.end(), ticket);
 	tickets.erase(ticketRemove, tickets.end());
+}
+
+void Flight::printFlight(){
+	cout << "Flight ID: " << id << endl;
+	cout << "Origin: " << originPlace << endl;
+	cout << "Destination: " << destination->getName() << endl;
+	cout << "Departure Date: " << departureDate->toString() << endl;
+	cout << "Return Date: " << returnDate->toString() << endl;
+	cout << "Flight Type: " << toString(flightType) << endl;
+	cout << "Passengers: " << tickets.size() << endl;
+
 }
 	
 

@@ -2,6 +2,7 @@
 #include "Resource.hpp"
 #include "DateTime.hpp"
 #include "Ticket.hpp"
+#include "Errors.hpp"
 #include <string>
 #include <iostream>
 #include <ctime>
@@ -23,7 +24,7 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
         departureDate->getYear(), 
         departureDate->getMonth(), 
         departureDate->getDay() + rand() % 5, 
-        departureDate->getHouns() + rand() % 59, 
+        departureDate->getHours() + rand() % 23, 
         departureDate->getMinutes() + rand() % 59,
         departureDate->getSeconds() + rand() % 59
         );
@@ -59,7 +60,7 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
 
 void FlightModule::cancelFlight(Flight flight) { throw 1; };
 
-Ticket *FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 
+void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 
     //TODO: Antes de chamar essa fução, verificar se o avião dentro dentes voo ainda tem espaço para mais clientes
 
     //Calculate ticket price
@@ -74,9 +75,24 @@ Ticket *FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat
     int idFligt = flight->getId();
     Ticket* ticket = new Ticket(client, idFligt, price, seatType);
     flight->addTicket(ticket);
-    return ticket;
 };
 
-void FlightModule::removeClientFromFlight(Ticket* ticket, Flight* flight) {
-    flight->removeTicket(ticket);
+void FlightModule::removeClientFromFlight(Client* client, Flight* flight) {
+    try
+    {
+        Ticket* removeTicket;
+        for (auto& ticket : flight->getTickets()) {
+            if(ticket->getClient()->getId() == client->getId()){
+                removeTicket = ticket;
+                break;
+            }
+        }
+        flight->removeTicket(removeTicket);
+    }
+    catch(const std::exception& e)
+    {
+        throw CANT_REMOVE_CLIENTE;
+    }
+    
+
 };
