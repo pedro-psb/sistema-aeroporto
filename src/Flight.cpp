@@ -83,3 +83,12 @@ void Flight::printFlight(){
 void Flight::setStatus(EnumFlightStatus status){
 	this->status = status;
 }
+
+int Flight::checkCapacity(){
+	int capacity = plane->getCapacity();
+	if(capacity > tickets.size()){
+		return 1;
+	}else{
+		return 0;
+	}
+}

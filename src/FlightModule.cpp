@@ -30,7 +30,7 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
         );
     
     //TODO: o bloco abaixo devem ser reescritas quando o módulo de recursos ficar pronto
-    Plane *plane = new Plane(500, EnumFlight::COMERCIAL);
+    Plane *plane = new Plane(2, EnumFlight::COMERCIAL);
     Runway *runway = new Runway("Pista 1");
     Pilot *pilot = new Pilot("João Silva", "12345678", 123456);
     Pilot *copilot = new Pilot("Antonio Rocha", "987654321", 987645);
@@ -63,21 +63,25 @@ void FlightModule::cancelFlight(Flight* flight) {
 };
 
 void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 
-    //TODO: Antes de chamar essa fução, verificar se o avião dentro deste voo ainda tem espaço para mais clientes
 
-    //Calculate ticket price
-    EnumFlight flightType = flight->getFlightType();
-    Destination* destination = flight->getDestination();
-    float distace = destination->getDistance();
-    double priceFlightType = getValue(flightType);
-    double priceSeatType = getValue(seatType);
-    double price = priceFlightType * distace + priceSeatType;
+    if(flight->checkCapacity()){
+        //Calculate ticket price
+        EnumFlight flightType = flight->getFlightType();
+        Destination* destination = flight->getDestination();
+        float distace = destination->getDistance();
+        double priceFlightType = getValue(flightType);
+        double priceSeatType = getValue(seatType);
+        double price = priceFlightType * distace + priceSeatType;
 
-    //Create the ticket and link it to the customer and the flight
-    int idFligt = flight->getId();
-    Ticket* ticket = new Ticket(client, idFligt, price, seatType);
-    flight->addTicket(ticket);
-	cout << "----- Client successfully entered the flight! -----" << endl;
+        //Create the ticket and link it to the customer and the flight
+        int idFligt = flight->getId();
+        Ticket* ticket = new Ticket(client, idFligt, price, seatType);
+        flight->addTicket(ticket);
+        cout << "----- Client successfully entered the flight! -----" << endl;
+    }else{
+        cout << "----- It was not possible to add a client to the flight. Full flight. -----" << endl;
+    }
+
 
 };
 

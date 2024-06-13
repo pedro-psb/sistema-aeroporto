@@ -51,6 +51,7 @@ class Flight
 		void printTickets();
 		void printFlight();
 		void setStatus(EnumFlightStatus status);
+		int checkCapacity();
 };
 #endif
 
