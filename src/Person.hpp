@@ -7,6 +7,7 @@ class Person
 {
     protected:
 		int id;
+        virtual int getId() = 0;
 
     private:
 		static int currentId;
