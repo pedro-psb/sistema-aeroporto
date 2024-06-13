@@ -29,21 +29,21 @@ int main() {
     cout << "* Pilot ID d1: " << pilot1->getId() << endl;
     cout << "* Pilot ID d2: " << copilot2->getId() << endl;
 
-    // vector<Steward*> stewards = new {};
-    // Steward *s1 = new Steward("Ana Julia", "65498731", "Feminino");
-    // Steward *s2 = new Steward("Maria Julia", "65498766", "Feminino");
-    // stewards.push_back(s1);
-    // stewards.push_back(s2);
+    vector<Steward*> stewards;
+    Steward *s1 = new Steward("Ana Julia", "65498731", "Feminino");
+    Steward *s2 = new Steward("Maria Julia", "65498766", "Feminino");
+    stewards.push_back(s1);
+    stewards.push_back(s2);
 
-    // BoardingCrew *crew = new BoardingCrew(pilot1, copilot2, stewards);
+    BoardingCrew *crew = new BoardingCrew(pilot1, copilot2, s1, 5);
 
-    // Flight *flight1 = new Flight(d1, "Sao Paulo", date1, date2, EnumFlight::COMERCIAL, plane1, runway, crew);
-    // Client *client1 = new Client("Amanda Fiaux", "12365478978");
-    // Ticket *ticket = new Ticket(client1, flight1, 1800.50, EnumSeat::ECONOMICA);
+    Flight *flight1 = new Flight(d1, "Sao Paulo", date1, date2, EnumFlight::COMERCIAL, plane1, runway, crew);
+    Client *client1 = new Client("Amanda Fiaux", "12365478978");
+    Ticket *ticket = new Ticket(client1, flight1, 1800.50, EnumSeat::ECONOMICA);
 
-    // cout << "\nFlight Type: " << toString(flight1->getFlightType()) << endl;
-    // cout << "\nTicket Type: " << toString(ticket->getSeatType()) << endl;
-    // cout << "\nTicket Value: " << getValue(ticket->getSeatType()) << endl;
+    cout << "\nFlight Type: " << toString(flight1->getFlightType()) << endl;
+    cout << "\nTicket Type: " << toString(ticket->getSeatType()) << endl;
+    cout << "\nTicket Value: " << getValue(ticket->getSeatType()) << endl;
 
   return 0;
 }
