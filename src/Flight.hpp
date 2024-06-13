@@ -1,5 +1,6 @@
 #ifndef FLIGHT
 #define FLIGHT
+#include "EnumFlightStatus.hpp"
 #include "Ticket.hpp"
 #include "DateTime.hpp"
 #include "EnumFlight.hpp" 
@@ -26,6 +27,7 @@ class Flight
 		Runway* runway;
 		BoardingCrew* crew;
 		vector<Ticket*> tickets;
+		EnumFlightStatus status;
 		
     public:
 		Flight();
@@ -50,3 +52,4 @@ class Flight
 		void printFlight();
 };
 #endif
+

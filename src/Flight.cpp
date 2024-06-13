@@ -32,7 +32,8 @@ Flight::Flight
 	runway(runway),
 	crew(crew),
 	id(currentId++),
-	tickets()
+	tickets(),
+	status(EnumFlightStatus::SCHEDULED)
 {}
 
 int Flight::getId(){
@@ -75,7 +76,7 @@ void Flight::printFlight(){
 	cout << "Return Date: " << returnDate->toString() << endl;
 	cout << "Flight Type: " << toString(flightType) << endl;
 	cout << "Passengers: " << tickets.size() << endl;
+	cout << "Status: " <<  toString(status) << endl;
 	cout << "\n"<< endl;
 }
-	
 

@@ -1,5 +1,7 @@
 #ifndef ENUM_SEAT_HPP
 #define ENUM_SEAT_HPP
+#include <string>
+using std::string;
 
 enum class EnumSeat {
     ECONOMICA,
@@ -8,7 +10,7 @@ enum class EnumSeat {
     PRIMEIRA_CLASSE
 };
 
-const char* toString(EnumSeat seat);
+string toString(EnumSeat seat);
 const double getValue(EnumSeat seat);
 
 #endif 

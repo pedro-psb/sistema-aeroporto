@@ -1,6 +1,6 @@
 #include "EnumSeat.hpp"
 
-const char* toString(EnumSeat seat) {
+string toString(EnumSeat seat) {
     switch(seat) {
         case EnumSeat::ECONOMICA: return "Economica";
         case EnumSeat::ECONOMICA_PREMIUM: return "Economica Premium";

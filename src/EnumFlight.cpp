@@ -1,6 +1,6 @@
 #include "EnumFlight.hpp"
 
-const char* toString(EnumFlight flight) {
+string toString(EnumFlight flight) {
     switch(flight) {
         case EnumFlight::MILITAR: return "Militar";
         case EnumFlight::CARGA: return "Carga";
