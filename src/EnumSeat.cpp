@@ -12,10 +12,11 @@ const char* toString(EnumSeat seat) {
 
 const double getValue(EnumSeat seat) {
     switch(seat) {
-        case EnumSeat::ECONOMICA: return 1500;
-        case EnumSeat::ECONOMICA_PREMIUM: return 1800;
-        case EnumSeat::EXECUTIVA: return 2000.50;
-        case EnumSeat::PRIMEIRA_CLASSE: return 2450.70;
+        //Tabela de valores
+        case EnumSeat::ECONOMICA: return 500;
+        case EnumSeat::ECONOMICA_PREMIUM: return 800;
+        case EnumSeat::EXECUTIVA: return 1500;
+        case EnumSeat::PRIMEIRA_CLASSE: return 2030;
         default: return 0;
     }
 }

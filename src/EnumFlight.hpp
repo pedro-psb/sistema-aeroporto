@@ -9,5 +9,6 @@ enum class EnumFlight {
 };
 
 const char* toString(EnumFlight flight);
+const double getValue(EnumFlight seat);
 
 #endif 

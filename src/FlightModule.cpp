@@ -60,9 +60,22 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
 void FlightModule::cancelFlight(Flight flight) { throw 1; };
 
 Ticket *FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 
+    //TODO: Antes de chamar essa fução, verificar se o avião dentro dentes voo ainda tem espaço para mais clientes
+
+    //Calcula preço da passagem
+    EnumFlight flightType = flight->getFlightType();
+    Destination* destination = flight->getDestiantion();
+    float distace = destination->getDistance();
+    double priceFlightType = getValue(flightType);
+    double priceSeatType = getValue(seatType);
+    double price = priceFlightType * distace + priceSeatType;
+
+    //Cria a passagem e vincula ao cliente e ao vôo
+    Ticket* ticket = new Ticket(client, flight, price, seatType);
+    return ticket;
 };
 
 void FlightModule::removeClientFromFlight(Ticket* ticket) {
-
+    
   
 };

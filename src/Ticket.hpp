@@ -23,6 +23,5 @@ class Ticket
 			EnumSeat seatType
 		);
 		EnumSeat getSeatType();
-        // float CalculatePrice(EnumSeat seat, float distance);
 };
 #endif

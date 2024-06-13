@@ -18,7 +18,3 @@ EnumSeat Ticket::getSeatType()  {
     return seatType;
 }
 
-// Ticket::CalculatePrice(EnumSeat seat, float distance)
-// {
-// 	return 0.0;
-// }
