@@ -61,6 +61,12 @@ void Flight::removeTicket(Ticket* ticket){
 	tickets.erase(ticketRemove, tickets.end());
 }
 
+void Flight::printTickets(){
+	for (auto& ticket : tickets) {
+		ticket->printTicket();
+	}
+}
+
 void Flight::printFlight(){
 	cout << "Flight ID: " << id << endl;
 	cout << "Origin: " << originPlace << endl;
@@ -69,7 +75,7 @@ void Flight::printFlight(){
 	cout << "Return Date: " << returnDate->toString() << endl;
 	cout << "Flight Type: " << toString(flightType) << endl;
 	cout << "Passengers: " << tickets.size() << endl;
-
+	cout << "\n"<< endl;
 }
 	
 

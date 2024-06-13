@@ -7,12 +7,13 @@ using std::string;
 class Client: public Person
 {
     private:
-        int passport;
+        string passport;
 
     public:
-        Client(string name, string cpf);
-        int getPassport();
+        Client(string name, string cpf, string passport);
+        string getPassport();
         int getId() override;
+        string getName();
 };
 
 #endif

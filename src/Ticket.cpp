@@ -1,5 +1,8 @@
 #include "Ticket.hpp"
+#include <iostream>
 using std::string;
+using std::cout;
+using std::endl;
 
 Ticket::Ticket(
 	Client* client,
@@ -20,5 +23,14 @@ EnumSeat Ticket::getSeatType()  {
 
 Client* Ticket::getClient()  {
     return client;
+}
+
+void Ticket::printTicket(){
+	cout << "Client ID: " << client->getId() << endl;
+	cout << "Client Passport: " << client->getPassport() << endl;
+	cout << "Client Name: " << client->getName() << endl;
+	cout << "Seat: " << toString(seatType) << endl;
+	cout << "Price: " << price << endl;
+	cout << "\n"<< endl;
 }
 

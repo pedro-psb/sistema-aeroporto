@@ -48,13 +48,6 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
         crew
     );
 
-    // try {
-    //     Resource *plane =
-    //         this->resourceModule->getResource(Resource::Plane, dateTime);
-    // } catch (...) {
-    //     throw CantCreateFlightErrorMsg;
-    // };
-
     return flight;
 };
 
@@ -75,6 +68,8 @@ void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat se
     int idFligt = flight->getId();
     Ticket* ticket = new Ticket(client, idFligt, price, seatType);
     flight->addTicket(ticket);
+	cout << "----- Client successfully entered the flight! -----" << endl;
+
 };
 
 void FlightModule::removeClientFromFlight(Client* client, Flight* flight) {
@@ -88,6 +83,8 @@ void FlightModule::removeClientFromFlight(Client* client, Flight* flight) {
             }
         }
         flight->removeTicket(removeTicket);
+	    cout << "----- Client successfully removed from flight! -----" << endl;
+
     }
     catch(const std::exception& e)
     {

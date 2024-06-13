@@ -26,25 +26,29 @@ int main() {
 
     BoardingCrew *crew = new BoardingCrew(pilot1, copilot2, s1, 5);
 
-    Client *client1 = new Client("Amanda Fiaux", "12365478978");
-    Client *client2 = new Client("Pedro Pessoa", "12365478978");
-    Client *client3 = new Client("Glaucus Miranda", "12365478978");
+    Client *client1 = new Client("Amanda Fiaux", "12365478978", "A753M");
+    Client *client2 = new Client("Pedro Pessoa", "12365478978", "P783M");
+    Client *client3 = new Client("Glaucus Miranda", "12365478978", "G908F");
 
     ResourceModule* resourceModule = new ResourceModule();
     FlightModule flightModule(resourceModule);
     Flight* flight = flightModule.createFlight("Sao Paulo", date1, d1, EnumFlight::COMERCIAL);
+    if (flight != nullptr) {
+           	cout << "----- Flight created successfully! -----" << endl;
+            flight->printFlight();
+    } else {
+        cout << "----- Failed to create flight. -----" << endl;
+    }
     flightModule.addClientToFlight(client1, flight, EnumSeat::ECONOMICA);
     flightModule.addClientToFlight(client2, flight, EnumSeat::PRIMEIRA_CLASSE);
     flightModule.addClientToFlight(client3, flight, EnumSeat::EXECUTIVA);
-
+    flight->printTickets();
     flightModule.removeClientFromFlight(client3, flight);
+    flight->printTickets();
+    flight->printFlight();
 
-    if (flight != nullptr) {
-           	cout << "Flight created successfully!" << endl;
-            flight->printFlight();
-    } else {
-        cout << "Failed to create flight." << endl;
-    }
+
+
 
   return 0;
 }

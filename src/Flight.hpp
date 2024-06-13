@@ -46,6 +46,7 @@ class Flight
 		Destination* getDestination();
 		void addTicket(Ticket* ticket);
 		void removeTicket(Ticket* ticket);
+		void printTickets();
 		void printFlight();
 };
 #endif

@@ -23,5 +23,6 @@ class Ticket
 		);
 		EnumSeat getSeatType();
 		Client* getClient();
+		void printTicket();
 };
 #endif
