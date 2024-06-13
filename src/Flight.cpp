@@ -12,7 +12,7 @@ Flight::Flight
 		Destination* destination,
 		string originPlace,
 		DateTime* returnDate, 
-		DateTime* exitDate,
+		DateTime* departureDate,
 		EnumFlight flightType,
 		Plane* plane,
 		Runway* runway,
@@ -21,7 +21,7 @@ Flight::Flight
 	destination(destination),
 	originPlace(originPlace),
 	returnDate(returnDate), 
-	exitDate(exitDate),
+	departureDate(departureDate),
 	flightType(flightType),
 	plane(plane),
 	runway(runway),
@@ -31,6 +31,10 @@ Flight::Flight
 
 EnumFlight Flight::getFlightType()  {
     return flightType;
+}
+
+Destination* Flight::getDestiantion()  {
+    return destination;
 }
 	
 

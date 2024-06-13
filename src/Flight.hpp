@@ -16,7 +16,7 @@ class Flight
 		Destination* destination;
 		string originPlace;
 		DateTime* returnDate;
-		DateTime* exitDate;
+		DateTime* departureDate;
 		EnumFlight flightType;
 		Plane* plane;
 		Runway* runway;
@@ -28,13 +28,15 @@ class Flight
 			Destination* destination,
 			string originPlace,
 			DateTime* returnDate, 
-			DateTime* exitDate,
+			DateTime* departureDate,
 			EnumFlight flightType,
 			Plane* plane,
 			Runway* runWay,
 			BoardingCrew* crew
 		);
-		Flight ();
+		Flight();
 		EnumFlight getFlightType();
+		Destination* getDestiantion();
+
 };
 #endif

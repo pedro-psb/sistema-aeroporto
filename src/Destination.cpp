@@ -4,11 +4,15 @@ using std::string;
 
 int Destination::currentId = 0;
 
-Destination::Destination(string name, float distance)
+Destination::Destination(string name, double distance)
     :name(name), distance(distance),id(currentId++) 
 {}
 	
-int Destination::getId() const {
+int Destination::getId(){
     return id;
+}
+
+double Destination::getDistance() {
+    return distance;
 }
 

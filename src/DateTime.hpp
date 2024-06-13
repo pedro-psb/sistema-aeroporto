@@ -23,5 +23,12 @@ class DateTime
 			int minutes,
 			int seconds
 		);
+		
+		int getYear();
+		int getMonth();
+		int getDay();
+		int getHouns();
+		int getMinutes();
+		int getSeconds();
 };
 #endif

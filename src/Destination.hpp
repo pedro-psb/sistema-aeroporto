@@ -7,11 +7,12 @@ class Destination
 	private:
 		int id;
 		static int currentId;
-		float distance;
+		double distance;
 		
     public:
 		string name;
-        Destination(string name, float distance);
-    	int getId() const;
+        Destination(string name, double distance);
+    	int getId();
+    	double getDistance();
 };
 #endif

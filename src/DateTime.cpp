@@ -17,3 +17,27 @@ DateTime::DateTime
 	minutes (minutes),
 	seconds (seconds)
 {}
+
+int DateTime::getYear(){
+	return year;
+}
+
+int DateTime::getMonth(){
+	return month;
+}
+
+int DateTime::getDay(){
+	return day;
+}
+
+int DateTime:: getHouns(){
+	return houns;
+}
+
+int DateTime::getMinutes(){
+	return minutes;
+}
+
+int DateTime::getSeconds(){
+	return seconds;
+}
