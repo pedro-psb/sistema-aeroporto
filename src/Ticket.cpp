@@ -1,14 +1,17 @@
 #include "Ticket.hpp"
+#include <iostream>
 using std::string;
+using std::cout;
+using std::endl;
 
 Ticket::Ticket(
 	Client* client,
- 	Flight* flight,
+ 	int idFlight,
 	float price,
 	EnumSeat seatType
 	):
 	client(client),
-	flight(flight),
+	idFlight(idFlight),
 	price(price),
 	seatType(seatType)
 {
@@ -18,7 +21,16 @@ EnumSeat Ticket::getSeatType()  {
     return seatType;
 }
 
-// Ticket::CalculatePrice(EnumSeat seat, float distance)
-// {
-// 	return 0.0;
-// }
+Client* Ticket::getClient()  {
+    return client;
+}
+
+void Ticket::printTicket(){
+	cout << "Client ID: " << client->getId() << endl;
+	cout << "Client Passport: " << client->getPassport() << endl;
+	cout << "Client Name: " << client->getName() << endl;
+	cout << "Seat: " << toString(seatType) << endl;
+	cout << "Price: " << price << endl;
+	cout << "\n"<< endl;
+}
+

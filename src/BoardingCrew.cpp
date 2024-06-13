@@ -5,7 +5,7 @@
 BoardingCrew::BoardingCrew() : Stewards(nullptr), numStewards(0) {}
 
 
-BoardingCrew::BoardingCrew(Pilot mainPilot, Pilot copilot, Steward* stewards, int numStewards) 
+BoardingCrew::BoardingCrew(Pilot* mainPilot, Pilot* copilot, Steward* stewards, int numStewards) 
     : MainPilot(mainPilot), Copilot(copilot), numStewards(numStewards) {
     if (numStewards > 0) {
         Stewards = new Steward[numStewards];
@@ -20,12 +20,12 @@ BoardingCrew::~BoardingCrew() {
 }
 
 
-Pilot BoardingCrew::getMainPilot() {
+Pilot* BoardingCrew::getMainPilot() {
     return MainPilot;
 }
 
 
-Pilot BoardingCrew::getCopilot() {
+Pilot* BoardingCrew::getCopilot() {
     return Copilot;
 }
 
@@ -40,12 +40,12 @@ int BoardingCrew::getNumStewards() {
 }
 
 
-void BoardingCrew::setMainPilot(Pilot mainPilot) {
+void BoardingCrew::setMainPilot(Pilot* mainPilot) {
     MainPilot = mainPilot;
 }
 
 
-void BoardingCrew::setCopilot(Pilot copilot) {
+void BoardingCrew::setCopilot(Pilot* copilot) {
     Copilot = copilot;
 }
 

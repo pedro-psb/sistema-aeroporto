@@ -1,5 +1,5 @@
 #include "Resource.hpp"
-int Resource::currentId = 0;
+int Resource::currentId = 1;
 
 Resource::Resource()
     :id(currentId++)
