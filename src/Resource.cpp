@@ -1,14 +1,14 @@
 #include "Resource.hpp"
-int Resource::currentId = 1;
+int Resource::currentResourceId = 1;
 
 Resource::Resource()
-    :id(currentId++)
+    :resource_id(currentResourceId++)
 {};
 
-int Resource::getId(){
-    return id;
+int Resource::getResourceId(){
+    return resource_id;
 }
 
-void Resource::setId(int a){
-    id=a;
+voResourceid Resource::setResourceId(int a){
+    resource_id=a;
 }

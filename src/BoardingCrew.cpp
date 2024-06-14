@@ -2,11 +2,11 @@
 #include <cstring> 
 
 
-BoardingCrew::BoardingCrew() : Stewards(nullptr), numStewards(0) {}
+BoardingCrew::BoardingCrew() : Stewards(nullptr), numStewards(0), Resource() {}
 
 
 BoardingCrew::BoardingCrew(Pilot* mainPilot, Pilot* copilot, Steward* stewards, int numStewards) 
-    : MainPilot(mainPilot), Copilot(copilot), numStewards(numStewards) {
+    : MainPilot(mainPilot), Copilot(copilot), numStewards(numStewards),Resource() {
     if (numStewards > 0) {
         Stewards = new Steward[numStewards];
         memcpy(Stewards, stewards, numStewards * sizeof(Steward));

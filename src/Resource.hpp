@@ -3,14 +3,14 @@
 
 class Resource{
     protected:
-        int id;
+        int resource_id;
 
     private:
-        static int currentId;
+        static int currentResourceId;
         
     public:
         Resource();
-        int getId();
-        void setId(int id);
+        int getResourceId();
+        void setResourceId(int id);
 };
 #endif
