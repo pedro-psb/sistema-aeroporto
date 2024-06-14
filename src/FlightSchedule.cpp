@@ -1,8 +1,7 @@
 #include "FlightSchedule.hpp"
-#include <vector>
-#include <cstring>
+#include <algorithm>
 FlightSchedule::FlightSchedule(){
-
+    flights = vector<Flight*>();//cria o vetor vazio
 }
 FlightSchedule::FlightSchedule(vector<Flight*> flights) : flights(flights) {
  /*   if (numFlights > 0) {//verifica se o nÃºmero Ã© maior que zero, para criar o vetor de voos
@@ -27,28 +26,30 @@ vector<Flight*> FlightSchedule::getFlights(){
     }
 }*/
         /* Add a vector of flights all at once. */
-        void addFlight(vector<Flight*> flights){
-            flights=flights;
+        void FlightSchedule::addFlight(vector<Flight*> Flights){
+            flights.insert(flights.end(), Flights.begin(), Flights.end());
         }
 
         /* Add a single flight. */
-        void addFlight(Flight* flight){
+        void FlightSchedule::addFlight(Flight* flight){
             flights.push_back(flight);
         }
 
         /* Remove a single flight. */
-        void removeFlight(Flight* flight){
-             flights.erase(std::remove(flights.begin(), flights.end(), flight), flights.end());
-
+        void FlightSchedule::removeFlight(Flight* flight){
+            auto it = std::find(flights.begin(), flights.end(), flight);
+                if (it != flights.end()) {
+                    flights.erase(it);
+                }
         }
 
         /* Get number of flights */
-        int count(){
+        int FlightSchedule::count(){
             return flights.size();
         }
 
         /* Clear flights table */
-        int clearFlights(){
+        int FlightSchedule::clearFlights(){
             int size;
             size=flights.size();
             flights.clear();

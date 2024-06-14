@@ -7,7 +7,7 @@
 #include "Runway.hpp"
 #include "Client.hpp"
 #include "Flight.hpp"
-#include "Flight.hpp"
+#include "FlightSchedule.hpp"
 
 using std::vector;
 
@@ -36,7 +36,7 @@ private:
   vector<Pilot*> pilotSet;
 
   /* The set of runaways available. */
-  vector<Runaway*> runawaySet;
+  vector<Runway*> runawaySet;
 
 public:
   /* Initializer */
