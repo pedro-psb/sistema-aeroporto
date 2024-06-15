@@ -61,6 +61,8 @@ class Flight
 		BoardingCrew *getBoardingCrew();
 		Plane *getPlane();
 		Runway *getRunway();
+		vector<Pilot *> getPilots();
+		vector<Steward *> getStewards();
 		pair<DateTime, DateTime> getBusyRange();
 
 };
