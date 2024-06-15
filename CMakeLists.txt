@@ -15,13 +15,13 @@ add_library(mylib ${SRC})
 # criar executavel dos testes automatizados. Linka com:
 # - nossa biblioteca
 # - lib de testes (catch2)
-# enable_testing()
-# foreach(SOURCE_PATH ${SRC_TESTS})
-#     get_filename_component(EXECUTABLE_NAME ${SOURCE_PATH} NAME_WE)
-#     add_executable(${EXECUTABLE_NAME} ${SOURCE_PATH})
-#     target_link_libraries(${EXECUTABLE_NAME} catch mylib test_mocks)
-#     add_test(${EXECUTABLE_NAME} ${EXECUTABLE_NAME})
-# endforeach(SOURCE_PATH ${SRC_TESTS})
+enable_testing()
+foreach(SOURCE_PATH ${SRC_TESTS})
+    get_filename_component(EXECUTABLE_NAME ${SOURCE_PATH} NAME_WE)
+    add_executable(${EXECUTABLE_NAME} ${SOURCE_PATH})
+    target_link_libraries(${EXECUTABLE_NAME} catch mylib)
+    add_test(${EXECUTABLE_NAME} ${EXECUTABLE_NAME})
+endforeach(SOURCE_PATH ${SRC_TESTS})
 
 # criar executavel dos testes manuais. Linka com:
 # - nossa biblioteca
