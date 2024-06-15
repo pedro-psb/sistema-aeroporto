@@ -3,9 +3,9 @@
 
 TEST_CASE("Given a fresh ResourceModule with 8 resources", "[functional]") {
   vector<Plane *> planes{new Plane(10, EnumFlight::COMERCIAL),
-                         new Plane(10, EnumFlight::EXECUTIVO),
-                         new Plane(10, EnumFlight::CARGA),
-                         new Plane(10, EnumFlight::MILITAR)};
+                         new Plane(10, EnumFlight::BUSINESS),
+                         new Plane(10, EnumFlight::CARGO),
+                         new Plane(10, EnumFlight::MILITARY)};
   vector<Pilot *> pilots{new Pilot("fulano", "111.111.111-11", 100)};
   vector<Steward *> stewards{new Steward("fulana", "222.222.222-22", "woman")};
   vector<Runway *> runways{new Runway("foo"), new Runway("bar")};
@@ -68,6 +68,7 @@ TEST_CASE("Given a fresh ResourceModule with 1 available resource of each type",
 
 TEST_CASE("Given a fresh ResourceModule with 1 unavailable resource",
           "[functional]") {
+  vector<Steward*> stewards;
   Pilot *pilot = new Pilot("foo", "bar", 123);
   Pilot *copilot = new Pilot("foo", "bar", 123);
   Steward *steward = new Steward("foo", "bar", "eggs");
@@ -75,11 +76,11 @@ TEST_CASE("Given a fresh ResourceModule with 1 unavailable resource",
   Plane *plane = new Plane(2, EnumFlight::COMERCIAL);
   DateTime *departureDate = new DateTime(2000, 1, 1, 0, 0, 0);
   DateTime *returnDate = new DateTime(2000, 1, 3, 0, 0, 0); // 2 days later
-
+  stewards.push_back(steward);
   Flight *flight = new Flight(new Destination("Belo Horizonte", 50), "here",
                               returnDate, departureDate, EnumFlight::COMERCIAL,
                               plane, new Runway("Pista 1"),
-                              new BoardingCrew(pilot, copilot, steward, 5));
+                              new BoardingCrew(pilot, copilot, stewards));
 
   ResourceModule resourceModule =
       ResourceModule({runway}, {plane}, {pilot}, {steward});
