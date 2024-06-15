@@ -27,7 +27,7 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
         departureDate->getHours() + rand() % 23, 
         departureDate->getMinutes() + rand() % 59,
         departureDate->getSeconds() + rand() % 59
-        );
+    );
     
     //TODO: o bloco abaixo devem ser reescritas quando o módulo de recursos ficar pronto
     Plane *plane = new Plane(2, EnumFlight::COMERCIAL);
@@ -66,12 +66,7 @@ void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat se
 
     if(flight->checkCapacity()){
         //Calculate ticket price
-        EnumFlight flightType = flight->getFlightType();
-        Destination* destination = flight->getDestination();
-        float distace = destination->getDistance();
-        double priceFlightType = getValue(flightType);
-        double priceSeatType = getValue(seatType);
-        double price = priceFlightType * distace + priceSeatType;
+        double price = flight->calculatePrice(seatType);
 
         //Create the ticket and link it to the customer and the flight
         int idFligt = flight->getId();

@@ -92,3 +92,11 @@ int Flight::checkCapacity(){
 		return 0;
 	}
 }
+
+int Flight::calculatePrice(EnumSeat seatType){
+	float distace = destination->getDistance();
+	double priceFlightType = getValue(flightType);
+	double priceSeatType = getValue(seatType);
+
+	return priceFlightType * distace + priceSeatType;
+}

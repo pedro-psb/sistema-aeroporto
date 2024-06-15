@@ -52,6 +52,7 @@ class Flight
 		void printFlight();
 		void setStatus(EnumFlightStatus status);
 		int checkCapacity();
+		int calculatePrice(EnumSeat seatType);
 };
 #endif
 
