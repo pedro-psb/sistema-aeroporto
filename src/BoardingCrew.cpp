@@ -2,36 +2,30 @@
 #include <cstring> 
 
 
-BoardingCrew::BoardingCrew() : Stewards(nullptr), numStewards(0), Resource() {}
+BoardingCrew::BoardingCrew() : stewards({}), Resource() {}
 
 
-BoardingCrew::BoardingCrew(Pilot* mainPilot, Pilot* copilot, Steward* stewards, int numStewards) 
-    : MainPilot(mainPilot), Copilot(copilot), numStewards(numStewards),Resource() {
-    if (numStewards > 0) {
-        Stewards = new Steward[numStewards];
-        memcpy(Stewards, stewards, numStewards * sizeof(Steward));
-    } else {
-        Stewards = nullptr;
-    }
+BoardingCrew::BoardingCrew(Pilot* mainPilot, Pilot* copilot, vector<Steward*> stewards) 
+    : mainPilot(mainPilot), copilot(copilot), stewards(stewards), Resource() {
 }
 
 BoardingCrew::~BoardingCrew() {
-    delete[] Stewards;
+    // delete[] stewards;
 }
 
 
 Pilot* BoardingCrew::getMainPilot() {
-    return MainPilot;
+    return mainPilot;
 }
 
 
 Pilot* BoardingCrew::getCopilot() {
-    return Copilot;
+    return copilot;
 }
 
 
-Steward* BoardingCrew::getStewards() {
-    return Stewards;
+vector<Steward*> BoardingCrew::getStewards() {
+    return stewards;
 }
 
 
@@ -41,22 +35,22 @@ int BoardingCrew::getNumStewards() {
 
 
 void BoardingCrew::setMainPilot(Pilot* mainPilot) {
-    MainPilot = mainPilot;
+    mainPilot = mainPilot;
 }
 
 
 void BoardingCrew::setCopilot(Pilot* copilot) {
-    Copilot = copilot;
+    copilot = copilot;
 }
 
 
-void BoardingCrew::setStewards(Steward* stewards, int numStewards) {
-    delete[] Stewards; 
-    this->numStewards = numStewards;
-    if (numStewards > 0) {
-        Stewards = new Steward[numStewards];
-        memcpy(Stewards, stewards, numStewards * sizeof(Steward));
-    } else {
-        Stewards = nullptr;
-    }
-}
+// void BoardingCrew::setStewards(vector<Steward*> stewards) {
+    // delete[] Stewards; 
+    // this->numStewards = numStewards;
+    // if (numStewards > 0) {
+    //     Stewards = new Steward[numStewards];
+    //     memcpy(Stewards, stewards, numStewards * sizeof(Steward));
+    // } else {
+    //     Stewards = nullptr;
+    // }
+// }
