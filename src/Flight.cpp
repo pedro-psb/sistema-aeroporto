@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <iostream>
+#include <utility>
 
 using std::cout;
 using std::endl;
@@ -10,7 +11,7 @@ using std::string;
 
 int Flight::currentId = 1;
 
-Flight::Flight(){};
+Flight::Flight(): id(currentId++){};
 
 Flight::Flight
 	(
@@ -91,4 +92,20 @@ int Flight::checkCapacity(){
 	}else{
 		return 0;
 	}
+}
+
+BoardingCrew *Flight::getBoardingCrew(){
+		return crew;
+}
+
+Plane *Flight::getPlane(){
+		return plane;
+}
+
+Runway *Flight::getRunway(){
+		return runway;
+}
+
+pair<DateTime, DateTime> Flight::getBusyRange(){
+	return std::make_pair(*departureDate, *returnDate);
 }

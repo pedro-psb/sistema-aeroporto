@@ -8,10 +8,13 @@
 #include "Plane.hpp"
 #include "Runway.hpp"
 #include "BoardingCrew.hpp"
+
 #include <vector>
+#include <utility>
 
 using std::string;
 using std::vector;
+using std::pair;
 
 class Flight
 {
@@ -52,6 +55,11 @@ class Flight
 		void printFlight();
 		void setStatus(EnumFlightStatus status);
 		int checkCapacity();
+		BoardingCrew *getBoardingCrew();
+		Plane *getPlane();
+		Runway *getRunway();
+		pair<DateTime, DateTime> getBusyRange();
+
 };
 #endif
 
