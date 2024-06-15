@@ -8,46 +8,99 @@
 
 using std::string, std::cout, std::endl;
 
-TEST_CASE("Given a fresh Mock ResourceModule", "[functional]") {
-  ResourceModuleMock *resourceModuleMock = new ResourceModuleMock();
-  auto pilot = resourceModuleMock->getResource(Pilot::Pilot, DateTime());
+TEST_CASE("Create Flight") {
+    //Given the information below
+    Destination *destination = new Destination("Belo Horizonte", 50);
+    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+    ResourceModule* resourceModule = new ResourceModule();
+    FlightModule flightModule(resourceModule);
 
-  SECTION("When enabling the mock raise-flag") {
-    resourceModuleMock->getResourceRaise = true;
-
-    THEN("An throw is thrown error") {
-      REQUIRE_THROWS_WITH(
-          resourceModuleMock->getResource(Pilot::Pilot, DateTime()),
-          CantCreateResourceErrorMsg);
-    }
-  }
+    //When to create the flight
+    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+    
+    //Then create a scheduled flight without a ticket
+    REQUIRE(flight->getStatus() == EnumFlightStatus::SCHEDULED);
+    REQUIRE(flight->getTickets().size() == 0);
 }
 
-TEST_CASE("Given a fresh FlightModule", "[functional]") {
-  ResourceModuleMock *resourceModuleMock = new ResourceModuleMock();
-  FlightModule *flightMod = new FlightModule(resourceModuleMock);
-  DateTime someTime = DateTime();
+TEST_CASE("Cancel Flight") {
+    //Given the information below
+    Destination *destination = new Destination("Belo Horizonte", 50);
+    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+    ResourceModule* resourceModule = new ResourceModule();
+    FlightModule flightModule(resourceModule);
+    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
 
-  SECTION("When we create a fresh Flight and there are enough resources.") {
-    Flight *newFlight = flightMod->createFlight(someTime);
+    //When to cancel the flight 
+    flightModule.cancelFlight(flight);
+    
+    //Then the flight status is "cancelled" 
+    REQUIRE(flight->getStatus() == EnumFlightStatus::CANCELLED);
+}
 
-    THEN("A new Flight is created") {
-      REQUIRE(newFlight != nullptr);
-      // REQUIRE(newFlight->departureTime == someTime);
-    }
-  }
+TEST_CASE("Add Client To Flight") {
+    //Given the information below
+    Destination *destination = new Destination("Belo Horizonte", 50);
+    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+    ResourceModule* resourceModule = new ResourceModule();
+    FlightModule flightModule(resourceModule);
+    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+    Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
 
-  SECTION("When we create a fresh Flight and there are not enough resources.") {
-    resourceModuleMock->getResourceRaise = true;
+    //When add client to flight
+    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMICA);
+    
+    //Then the number of Ticket must be 1
+    REQUIRE(flight->getTickets().size() == 1);
+}
 
-    THEN("Throw error saying that cannot create flight.") {
-      REQUIRE_THROWS_WITH(flightMod->createFlight(someTime),
-                          CantCreateFlightErrorMsg);
-    }
-  }
+TEST_CASE("Remove Client From Flight") {
+    //Given the information below
+    Destination *destination = new Destination("Belo Horizonte", 50);
+    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+    ResourceModule* resourceModule = new ResourceModule();
+    FlightModule flightModule(resourceModule);
+    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+    Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
+    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMICA);
 
-  SECTION("When we add a Client to a Flight and the flight has seats."){};
-  SECTION("When we add a Client to a Flight and the flight is full."){};
-  SECTION("When we remove a Client from a Flight."){};
-  SECTION("When we cancel a Flight."){};
+    //When remove client from flight
+    flightModule.removeClientFromFlight(client, flight);
+    
+    //Then the number of Ticket must be 0
+    REQUIRE(flight->getTickets().size() == 0);
+}
+
+TEST_CASE("Calculate Ticket Price - Flight COMERCIAL, Seat ECONOMICA, Distance 50") {
+    //Given the information below 
+    Destination *destination = new Destination("Belo Horizonte", 50);
+    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+    ResourceModule* resourceModule = new ResourceModule();
+    FlightModule flightModule(resourceModule);
+
+    //When the flight is COMERCIAL and the seat is ECONOMICA class 
+    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+    Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
+    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMICA);
+    Ticket* ticketTest = flight->getTicketByClient(client);
+    
+    //Then the ticket value must be 2799
+    REQUIRE(ticketTest->getPrice() == 2799);
+}
+
+TEST_CASE("Calculate Ticket Price - Flight EXECUTIVO, Seat PRIMEIRA_CLASSE, Distance 50") {
+    //Given the information below 
+    Destination *destination = new Destination("Belo Horizonte", 50);
+    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+    ResourceModule* resourceModule = new ResourceModule();
+    FlightModule flightModule(resourceModule);
+
+    //When the flight is EXECUTIVO and the seat is PRIMEIRA_CLASSE
+    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::EXECUTIVO);
+    Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
+    flightModule.addClientToFlight(client, flight, EnumSeat::PRIMEIRA_CLASSE);
+    Ticket* ticketTest = flight->getTicketByClient(client);
+    
+    //Then the ticket value must be 4615
+    REQUIRE(ticketTest->getPrice() == 4615);
 }
