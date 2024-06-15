@@ -4,10 +4,10 @@
 using std::string;
 
 enum class EnumFlight {
-    MILITAR,
-    CARGA,
+    MILITARY,
+    CARGO,
     COMERCIAL,
-    EXECUTIVO
+    BUSINESS
 };
 
 string toString(EnumFlight flight);

@@ -2,10 +2,10 @@
 
 string toString(EnumFlight flight) {
     switch(flight) {
-        case EnumFlight::MILITAR: return "Militar";
-        case EnumFlight::CARGA: return "Carga";
+        case EnumFlight::MILITARY: return "Militar";
+        case EnumFlight::CARGO: return "Carga";
         case EnumFlight::COMERCIAL: return "Comercial";
-        case EnumFlight::EXECUTIVO: return "Executivo";
+        case EnumFlight::BUSINESS: return "Executivo";
         default: return "Unknown";
     }
 }
@@ -13,10 +13,10 @@ string toString(EnumFlight flight) {
 const double getValue(EnumFlight flight) {
     switch(flight) {
         //Tabela de valores
-        case EnumFlight::MILITAR: return 12.5;
-        case EnumFlight::CARGA: return 7.8;
+        case EnumFlight::MILITARY: return 12.5;
+        case EnumFlight::CARGO: return 7.8;
         case EnumFlight::COMERCIAL: return 45.98;
-        case EnumFlight::EXECUTIVO: return 51.70;
+        case EnumFlight::BUSINESS: return 51.70;
         default: return 0;
     }
 }

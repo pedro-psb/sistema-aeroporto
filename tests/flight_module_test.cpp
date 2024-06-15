@@ -96,7 +96,7 @@ TEST_CASE("Calculate Ticket Price - Flight EXECUTIVO, Seat FIRST_CLASS, Distance
     FlightModule flightModule(resourceModule);
 
     //When the flight is EXECUTIVO and the seat is FIRST_CLASS
-    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::EXECUTIVO);
+    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::BUSINESS);
     Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
     flightModule.addClientToFlight(client, flight, EnumSeat::FIRST_CLASS);
     Ticket* ticketTest = flight->getTicketByClient(client);
