@@ -48,7 +48,7 @@ TEST_CASE("Add Client To Flight") {
     Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
 
     //When add client to flight
-    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMICA);
+    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
     
     //Then the number of Ticket must be 1
     REQUIRE(flight->getTickets().size() == 1);
@@ -62,7 +62,7 @@ TEST_CASE("Remove Client From Flight") {
     FlightModule flightModule(resourceModule);
     Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
     Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
-    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMICA);
+    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
 
     //When remove client from flight
     flightModule.removeClientFromFlight(client, flight);
@@ -71,34 +71,34 @@ TEST_CASE("Remove Client From Flight") {
     REQUIRE(flight->getTickets().size() == 0);
 }
 
-TEST_CASE("Calculate Ticket Price - Flight COMERCIAL, Seat ECONOMICA, Distance 50") {
+TEST_CASE("Calculate Ticket Price - Flight COMERCIAL, Seat ECONOMY_CLASS, Distance 50") {
     //Given the information below 
     Destination *destination = new Destination("Belo Horizonte", 50);
     DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
     ResourceModule* resourceModule = new ResourceModule();
     FlightModule flightModule(resourceModule);
 
-    //When the flight is COMERCIAL and the seat is ECONOMICA class 
+    //When the flight is COMERCIAL and the seat is ECONOMY_CLASS  
     Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
     Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
-    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMICA);
+    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
     Ticket* ticketTest = flight->getTicketByClient(client);
     
     //Then the ticket value must be 2799
     REQUIRE(ticketTest->getPrice() == 2799);
 }
 
-TEST_CASE("Calculate Ticket Price - Flight EXECUTIVO, Seat PRIMEIRA_CLASSE, Distance 50") {
+TEST_CASE("Calculate Ticket Price - Flight EXECUTIVO, Seat FIRST_CLASS, Distance 50") {
     //Given the information below 
     Destination *destination = new Destination("Belo Horizonte", 50);
     DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
     ResourceModule* resourceModule = new ResourceModule();
     FlightModule flightModule(resourceModule);
 
-    //When the flight is EXECUTIVO and the seat is PRIMEIRA_CLASSE
+    //When the flight is EXECUTIVO and the seat is FIRST_CLASS
     Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::EXECUTIVO);
     Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
-    flightModule.addClientToFlight(client, flight, EnumSeat::PRIMEIRA_CLASSE);
+    flightModule.addClientToFlight(client, flight, EnumSeat::FIRST_CLASS);
     Ticket* ticketTest = flight->getTicketByClient(client);
     
     //Then the ticket value must be 4615

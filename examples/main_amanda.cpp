@@ -20,9 +20,9 @@ int main() {
         Flight* flight = flightModule.createFlight("Sao Paulo", date1, d1, EnumFlight::COMERCIAL);
         flight->printFlight();
 
-        flightModule.addClientToFlight(client1, flight, EnumSeat::ECONOMICA);
-        flightModule.addClientToFlight(client2, flight, EnumSeat::PRIMEIRA_CLASSE);
-        flightModule.addClientToFlight(client3, flight, EnumSeat::EXECUTIVA);
+        flightModule.addClientToFlight(client1, flight, EnumSeat::ECONOMY_CLASS);
+        flightModule.addClientToFlight(client2, flight, EnumSeat::FIRST_CLASS);
+        flightModule.addClientToFlight(client3, flight, EnumSeat::BUSINESS_CLASS);
         flight->printTickets();
         // flightModule.removeClientFromFlight(client3, flight);
         flight->printFlight();

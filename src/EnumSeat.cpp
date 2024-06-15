@@ -2,10 +2,10 @@
 
 string toString(EnumSeat seat) {
     switch(seat) {
-        case EnumSeat::ECONOMICA: return "Economica";
-        case EnumSeat::ECONOMICA_PREMIUM: return "Economica Premium";
-        case EnumSeat::EXECUTIVA: return "Executiva";
-        case EnumSeat::PRIMEIRA_CLASSE: return "Primeira Classe";
+        case EnumSeat::ECONOMY_CLASS: return "Economica";
+        case EnumSeat::PREMIUM_ECONOMY_CLASS: return "Economica Premium";
+        case EnumSeat::BUSINESS_CLASS: return "Executiva";
+        case EnumSeat::FIRST_CLASS: return "Primeira Classe";
         default: return "Unknown";
     }
 }
@@ -13,10 +13,10 @@ string toString(EnumSeat seat) {
 const double getValue(EnumSeat seat) {
     switch(seat) {
         //Tabela de valores
-        case EnumSeat::ECONOMICA: return 500;
-        case EnumSeat::ECONOMICA_PREMIUM: return 800;
-        case EnumSeat::EXECUTIVA: return 1500;
-        case EnumSeat::PRIMEIRA_CLASSE: return 2030;
+        case EnumSeat::ECONOMY_CLASS: return 500;
+        case EnumSeat::PREMIUM_ECONOMY_CLASS: return 800;
+        case EnumSeat::BUSINESS_CLASS: return 1500;
+        case EnumSeat::FIRST_CLASS: return 2030;
         default: return 0;
     }
 }
