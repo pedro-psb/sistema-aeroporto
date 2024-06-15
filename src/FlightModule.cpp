@@ -63,7 +63,6 @@ void FlightModule::cancelFlight(Flight* flight) {
     }
 
 	cout << "----- Flight successfully cancelled! -----" << endl;
-
 };
 
 void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 
@@ -78,30 +77,23 @@ void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat se
         flight->addTicket(ticket);
         cout << "----- Client successfully entered the flight! -----" << endl;
     }else{
-        cout << "----- It was not possible to add a client to the flight. Full flight. -----" << endl;
+       throw "----- It was not possible to add a client to the flight. Full flight. -----";
     }
 
 
 };
 
 void FlightModule::removeClientFromFlight(Client* client, Flight* flight) {
-    try
-    {
-        Ticket* removeTicket;
-        for (auto& ticket : flight->getTickets()) {
-            if(ticket->getClient()->getId() == client->getId()){
-                removeTicket = ticket;
-                break;
-            }
+    
+    Ticket* removeTicket;
+    for (auto& ticket : flight->getTickets()) {
+        if(ticket->getClient()->getId() == client->getId()){
+            removeTicket = ticket;
+            break;
         }
-        flight->removeTicket(removeTicket);
-	    cout << "----- Client successfully removed from flight! -----" << endl;
-
     }
-    catch(const std::exception& e)
-    {
-        throw CANT_REMOVE_CLIENTE;
-    }
+    flight->removeTicket(removeTicket);
+    cout << "----- Client successfully removed from flight! -----" << endl;
     
 
 };
