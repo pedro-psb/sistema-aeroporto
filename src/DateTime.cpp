@@ -47,3 +47,28 @@ string DateTime::toString(){
 	return to_string(day) + "/" + to_string(month) + "/" + to_string(year) + " " +
            to_string(hours) + ":" + to_string(minutes) + ":" + to_string(seconds);
 }
+
+bool DateTime::operator>(DateTime other) {
+  if (this->year > other.year)
+    return true;
+  if (this->month > other.month)
+    return true;
+  if (this->day > other.day)
+    return true;
+  if (this->hours > other.hours)
+    return true;
+  return false;
+}
+
+bool DateTime::operator<(DateTime other) {
+  if (this->year < other.year)
+    return true;
+  if (this->month < other.month)
+    return true;
+  if (this->day < other.day)
+    return true;
+  if (this->hours < other.hours)
+    return true;
+  return false;
+}
+

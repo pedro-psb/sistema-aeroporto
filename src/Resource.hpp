@@ -1,16 +1,27 @@
 #ifndef RESOURCE
 #define RESOURCE
 
+#include <string>
+using std::string;
+
+enum class ResourceType { Runway, Steward, Pilot, Plane };
+
 class Resource{
     protected:
-        int id;
+        int resource_id;
+        ResourceType resourceType;
 
     private:
-        static int currentId;
+        static int currentResourceId;
         
     public:
         Resource();
-        int getId();
-        void setId(int id);
+        Resource(ResourceType resourceType);
+
+        ResourceType getType();
+        // string getTypeString();
+
+        int getResourceId();
+        void setResourceId(int id);
 };
 #endif
