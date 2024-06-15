@@ -31,5 +31,8 @@ class DateTime
 		int getMinutes();
 		int getSeconds();
 		string toString();
+
+		bool operator<(DateTime other);
+		bool operator>(DateTime other);
 };
 #endif
