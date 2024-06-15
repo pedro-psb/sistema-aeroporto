@@ -27,7 +27,7 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
         departureDate->getHours() + rand() % 23, 
         departureDate->getMinutes() + rand() % 59,
         departureDate->getSeconds() + rand() % 59
-        );
+    );
     
     //TODO: o bloco abaixo devem ser reescritas quando o módulo de recursos ficar pronto
     Plane *plane = new Plane(2, EnumFlight::COMERCIAL);
@@ -48,6 +48,10 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
         crew
     );
 
+    if (flight == nullptr) {
+        throw "Failed to create flight.";
+    }
+
     return flight;
 };
 
@@ -59,19 +63,13 @@ void FlightModule::cancelFlight(Flight* flight) {
     }
 
 	cout << "----- Flight successfully cancelled! -----" << endl;
-
 };
 
 void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 
 
     if(flight->checkCapacity()){
         //Calculate ticket price
-        EnumFlight flightType = flight->getFlightType();
-        Destination* destination = flight->getDestination();
-        float distace = destination->getDistance();
-        double priceFlightType = getValue(flightType);
-        double priceSeatType = getValue(seatType);
-        double price = priceFlightType * distace + priceSeatType;
+        double price = flight->calculatePrice(seatType);
 
         //Create the ticket and link it to the customer and the flight
         int idFligt = flight->getId();
@@ -79,30 +77,23 @@ void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat se
         flight->addTicket(ticket);
         cout << "----- Client successfully entered the flight! -----" << endl;
     }else{
-        cout << "----- It was not possible to add a client to the flight. Full flight. -----" << endl;
+       throw "----- It was not possible to add a client to the flight. Full flight. -----";
     }
 
 
 };
 
 void FlightModule::removeClientFromFlight(Client* client, Flight* flight) {
-    try
-    {
-        Ticket* removeTicket;
-        for (auto& ticket : flight->getTickets()) {
-            if(ticket->getClient()->getId() == client->getId()){
-                removeTicket = ticket;
-                break;
-            }
+    
+    Ticket* removeTicket;
+    for (auto& ticket : flight->getTickets()) {
+        if(ticket->getClient()->getId() == client->getId()){
+            removeTicket = ticket;
+            break;
         }
-        flight->removeTicket(removeTicket);
-	    cout << "----- Client successfully removed from flight! -----" << endl;
-
     }
-    catch(const std::exception& e)
-    {
-        throw CANT_REMOVE_CLIENTE;
-    }
+    flight->removeTicket(removeTicket);
+    cout << "----- Client successfully removed from flight! -----" << endl;
     
 
 };

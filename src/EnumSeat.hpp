@@ -4,10 +4,10 @@
 using std::string;
 
 enum class EnumSeat {
-    ECONOMICA,
-    ECONOMICA_PREMIUM,
-    EXECUTIVA,
-    PRIMEIRA_CLASSE
+    ECONOMY_CLASS,
+    PREMIUM_ECONOMY_CLASS,
+    BUSINESS_CLASS,
+    FIRST_CLASS
 };
 
 string toString(EnumSeat seat);

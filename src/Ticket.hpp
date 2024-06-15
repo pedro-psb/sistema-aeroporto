@@ -23,6 +23,7 @@ class Ticket
 		);
 		EnumSeat getSeatType();
 		Client* getClient();
+		float getPrice();
 		void printTicket();
 };
 #endif

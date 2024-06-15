@@ -19,7 +19,7 @@ enable_testing()
 foreach(SOURCE_PATH ${SRC_TESTS})
     get_filename_component(EXECUTABLE_NAME ${SOURCE_PATH} NAME_WE)
     add_executable(${EXECUTABLE_NAME} ${SOURCE_PATH})
-    target_link_libraries(${EXECUTABLE_NAME} catch mylib test_mocks)
+    target_link_libraries(${EXECUTABLE_NAME} catch mylib)
     add_test(${EXECUTABLE_NAME} ${EXECUTABLE_NAME})
 endforeach(SOURCE_PATH ${SRC_TESTS})
 

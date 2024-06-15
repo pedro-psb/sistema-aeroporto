@@ -53,8 +53,11 @@ class Flight
 		void removeTicket(Ticket* ticket);
 		void printTickets();
 		void printFlight();
+		EnumFlightStatus getStatus();
 		void setStatus(EnumFlightStatus status);
 		int checkCapacity();
+		int calculatePrice(EnumSeat seatType);
+		Ticket* getTicketByClient(Client* client);
 		BoardingCrew *getBoardingCrew();
 		Plane *getPlane();
 		Runway *getRunway();

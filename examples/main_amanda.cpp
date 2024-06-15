@@ -14,27 +14,25 @@ int main() {
 
     ResourceModule* resourceModule = new ResourceModule();
     FlightModule flightModule(resourceModule);
-    Flight* flight = flightModule.createFlight("Sao Paulo", date1, d1, EnumFlight::COMERCIAL);
+    
+    try
+    {
+        Flight* flight = flightModule.createFlight("Sao Paulo", date1, d1, EnumFlight::COMERCIAL);
+        flight->printFlight();
 
-    if (flight != nullptr) {
-           	cout << "----- Flight created successfully! -----" << endl;
-            flight->printFlight();
-    } else {
-        cout << "----- Failed to create flight. -----" << endl;
+        flightModule.addClientToFlight(client1, flight, EnumSeat::ECONOMY_CLASS);
+        flightModule.addClientToFlight(client2, flight, EnumSeat::FIRST_CLASS);
+        flightModule.addClientToFlight(client3, flight, EnumSeat::BUSINESS_CLASS);
+        flight->printTickets();
+        // flightModule.removeClientFromFlight(client3, flight);
+        flight->printFlight();
+        flightModule.cancelFlight(flight);
+        flight->printFlight();
     }
-
-    flightModule.addClientToFlight(client1, flight, EnumSeat::ECONOMICA);
-    flightModule.addClientToFlight(client2, flight, EnumSeat::PRIMEIRA_CLASSE);
-    flightModule.addClientToFlight(client3, flight, EnumSeat::EXECUTIVA);
-    flight->printTickets();
-    // flightModule.removeClientFromFlight(client3, flight);
-    flight->printFlight();
-    flightModule.cancelFlight(flight);
-    flight->printFlight();
-
-
-
-
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
   return 0;
 }

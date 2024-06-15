@@ -81,6 +81,10 @@ void Flight::printFlight(){
 	cout << "\n"<< endl;
 }
 
+EnumFlightStatus Flight::getStatus(){
+	return status;
+}
+
 void Flight::setStatus(EnumFlightStatus status){
 	this->status = status;
 }
@@ -108,4 +112,23 @@ Runway *Flight::getRunway(){
 
 pair<DateTime, DateTime> Flight::getBusyRange(){
 	return std::make_pair(*departureDate, *returnDate);
+}
+
+int Flight::calculatePrice(EnumSeat seatType){
+	float distace = destination->getDistance();
+	double priceFlightType = getValue(flightType);
+	double priceSeatType = getValue(seatType);
+
+	return priceFlightType * distace + priceSeatType;
+}
+
+Ticket* Flight::getTicketByClient(Client* client){
+	Ticket* ticketReturn;
+	for (auto& ticket : tickets) {
+		if(ticket->getClient()->getId() == client->getId()){
+			ticketReturn = ticket;
+			break;
+		}
+	}
+	return ticketReturn;
 }
