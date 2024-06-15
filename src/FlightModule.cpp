@@ -48,6 +48,10 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
         crew
     );
 
+    if (flight == nullptr) {
+        throw "Failed to create flight.";
+    }
+
     return flight;
 };
 
