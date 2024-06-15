@@ -25,6 +25,10 @@ Client* Ticket::getClient()  {
     return client;
 }
 
+float Ticket::getPrice(){
+	return price;
+}
+
 void Ticket::printTicket(){
 	cout << "Client ID: " << client->getId() << endl;
 	cout << "Client Passport: " << client->getPassport() << endl;

@@ -80,6 +80,10 @@ void Flight::printFlight(){
 	cout << "\n"<< endl;
 }
 
+EnumFlightStatus Flight::getStatus(){
+	return status;
+}
+
 void Flight::setStatus(EnumFlightStatus status){
 	this->status = status;
 }
@@ -99,4 +103,15 @@ int Flight::calculatePrice(EnumSeat seatType){
 	double priceSeatType = getValue(seatType);
 
 	return priceFlightType * distace + priceSeatType;
+}
+
+Ticket* Flight::getTicketByClient(Client* client){
+	Ticket* ticketReturn;
+	for (auto& ticket : tickets) {
+		if(ticket->getClient()->getId() == client->getId()){
+			ticketReturn = ticket;
+			break;
+		}
+	}
+	return ticketReturn;
 }
