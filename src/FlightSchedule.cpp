@@ -1,27 +1,32 @@
 #include "FlightSchedule.hpp"
-#include <cstring>
-FlightSchedule::FlightSchedule(){
+#include <algorithm>
 
+FlightSchedule::FlightSchedule() {
+  flights = vector<Flight *>(); // cria o vetor vazio
 }
-FlightSchedule::FlightSchedule(Flight* flights, int numFlights) : numFlights(numFlights) {
-    if (numFlights > 0) {//verifica se o número é maior que zero, para criar o vetor de voos
-        this->flights = new Flight[numFlights];
-        memcpy(this->flights, flights, numFlights * sizeof(Flight)); //para mais informações da função: https://www.geeksforgeeks.org/memcpy-in-cc/
-    } else {//caso seja menor ou igual a zero, retorna um ponteiro nulo
-        this->flights = nullptr;
-    }
-}
-Flight* FlightSchedule::getFlights(){
-    return flights;
-}
-void FlightSchedule::setFlights(Flight* flights, int numFlights) {
-    delete[] this->flights; //limpa a memoria de flights, caso haja
-    this->numFlights = numFlights;
 
-    if (numFlights > 0) {//se o número de voos, for maior que zero, gerará o vetor com os voos
-        this->flights = new Flight[numFlights];
-        memcpy(this->flights, flights, numFlights * sizeof(Flight));
-    } else {
-        this->flights = nullptr;
-    }
+FlightSchedule::FlightSchedule(vector<Flight *> flights) : flights(flights) {}
+
+vector<Flight *> FlightSchedule::getFlights() { return flights; }
+
+void FlightSchedule::addFlight(vector<Flight *> Flights) {
+  flights.insert(flights.end(), Flights.begin(), Flights.end());
+}
+
+void FlightSchedule::addFlight(Flight *flight) { flights.push_back(flight); }
+
+void FlightSchedule::removeFlight(Flight *flight) {
+  auto it = std::find(flights.begin(), flights.end(), flight);
+  if (it != flights.end()) {
+    flights.erase(it);
+  }
+}
+
+int FlightSchedule::count() { return flights.size(); }
+
+int FlightSchedule::clearFlights() {
+  int size;
+  size = flights.size();
+  flights.clear();
+  return size;
 }

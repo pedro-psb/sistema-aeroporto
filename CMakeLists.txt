@@ -9,7 +9,7 @@ file(GLOB SRC_EXAMPLES "examples/*.cpp") # testes manuais c/ main
 # adicionar bibliotecas
 add_library(catch lib/catch.cpp)
 add_library(mylib ${SRC})
-# add_library(test_mocks ${SRC_MOCKS})
+add_library(test_mocks ${SRC_MOCKS})
 
 
 # criar executavel dos testes automatizados. Linka com:

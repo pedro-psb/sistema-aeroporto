@@ -4,6 +4,7 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 #include "Flight.hpp"
 #include "Person.hpp"

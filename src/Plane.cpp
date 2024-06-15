@@ -1,7 +1,8 @@
 #include "Plane.hpp"
+#include "Resource.hpp"
 
 Plane::Plane(int capacity, EnumFlight planeType)
-    :capacity(capacity), planeType(planeType), Resource(){
+    :capacity(capacity), planeType(planeType), Resource(ResourceType::Plane) {
 }
 
 int Plane::getCapacity(){
