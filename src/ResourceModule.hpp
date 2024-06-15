@@ -1,13 +1,13 @@
 #include <vector>
 
-#include "Resource.hpp"
-#include "Pilot.hpp"
-#include "Plane.hpp"
-#include "Steward.hpp"
-#include "Runway.hpp"
 #include "Client.hpp"
 #include "Flight.hpp"
 #include "FlightSchedule.hpp"
+#include "Pilot.hpp"
+#include "Plane.hpp"
+#include "Resource.hpp"
+#include "Runway.hpp"
+#include "Steward.hpp"
 
 using std::vector;
 
@@ -18,7 +18,7 @@ using std::vector;
 
 class FlightTable {
 private:
-  vector<Flight> internalStorage;
+  FlightSchedule flightSchedule;
 };
 
 class ResourceModule {
@@ -26,44 +26,54 @@ private:
   /* The "Source Of Truth" table of the saved Flights. */
   FlightSchedule flightSchedule;
 
-  /* The set of resources available. */
-  vector<Steward*> stewardSet;
+  vector<Resource *> resources;
 
-  /* The set of planes available. */
-  vector<Plane*> planeSet;
+  // /* The set of resources available. */
+  // vector<Steward *> stewardSet;
 
-  /* The set of pilots available. */
-  vector<Pilot*> pilotSet;
+  // /* The set of planes available. */
+  // vector<Plane *> planeSet;
 
-  /* The set of runaways available. */
-  vector<Runway*> runawaySet;
+  // /* The set of pilots available. */
+  // vector<Pilot *> pilotSet;
+
+  // /* The set of runaways available. */
+  // vector<Runway *> runawaySet;
 
 public:
   /* Initializer */
   ResourceModule();
 
-  /* Try to get a Resource of @Resource for a given @dateTime
+  /* Custom Initializer.
+   * Initialze the data by creating N instances of each type of Resource.
+   */
+  ResourceModule(int N);
+
+  /* Try to get an Resource of @Resource that is available at a given @dateTime.
    * Raises "ResourceNotAvailableError" if its not available at that time */
-  virtual Resource *getResource(Resource resource, DateTime datime);
+  virtual Resource *getAvailableResource(Resource resource, DateTime datime);
 
   /* Free the @resource if its being used during dateTime.
   /* Ignore if the @resource was not begin used at that time. */
-  void freeResource(Resource resource, DateTime dateTime);
+  void freeResource(Resource *resource, DateTime dateTime);
 
   /* Adds a @flight to the flightTable.
    * Raises "FlighAlreadyExistError" if a Flight with the same id already exist.
    */
-  void saveFlight(Flight flight);
+  void saveFlight(Flight *flight);
 
   /* Update a @flight (client only). */
-  void updateFlight(Flight flight, vector<Client> clientList);
+  void updateFlight(Flight *flight, vector<Client> clientList);
 
-  /* Deletes a @flight.
+  /* Deletes a @flight from storage and return it.
    * Ignore if the @flight was not present in the flightTable. */
-  void deleteFlight(Flight flight);
+  void deleteFlight(Flight *flight);
+
+  /* Gets a list of the fixed set of Resources. */
+  virtual vector<Resource *> getAllResources();
 
   /* Get a read-only copy of the flightTable. */
-  vector<Flight> getFlightTable();
+  vector<Flight *> getAllFlights();
 };
 
 #endif

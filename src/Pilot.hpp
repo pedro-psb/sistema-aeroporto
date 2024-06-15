@@ -1,9 +1,10 @@
 #ifndef PILOT
 #define PILOT
 #include "Person.hpp"
+#include "Resource.hpp"
 using std::string;
 
-class Pilot: public Person
+class Pilot: public Person, public Resource
 {
     private:
         int license;

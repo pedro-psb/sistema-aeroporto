@@ -1,9 +1,10 @@
 #ifndef STEWARD
 #define STEWARD
 #include "Person.hpp"
+#include "Resource.hpp"
 using std::string;
 
-class Steward: public Person
+class Steward: public Person, public Resource
 {
     private:
         string gender;

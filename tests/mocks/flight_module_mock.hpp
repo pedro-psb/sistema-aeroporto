@@ -8,7 +8,7 @@ using std::vector, std::string, std::cout, std::endl;
 // Mocks
 class ResourceModuleMock : public ResourceModule {
 public:
-  std::map<Resource, vector<Resource *>> mockResourceMap;
+  // std::map<Resource, vector<Resource *>> mockResourceMap;
   bool getResourceRaise;
   int pilotId;
   int stewardId;
@@ -21,5 +21,5 @@ public:
   ResourceModuleMock();
 
   /* Return generated Resources with additive id's */
-  Resource *getResource(Resource resource, DateTime dateTime);
+  Resource *getAvailableResource(Resource resource, DateTime dateTime);
 };

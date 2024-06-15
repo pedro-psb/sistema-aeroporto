@@ -9,6 +9,6 @@ int Resource::getResourceId(){
     return resource_id;
 }
 
-voResourceid Resource::setResourceId(int a){
+void Resource::setResourceId(int a){
     resource_id=a;
 }
