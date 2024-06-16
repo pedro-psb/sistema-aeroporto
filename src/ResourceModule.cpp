@@ -52,10 +52,7 @@ Flight *ResourceModule::freeFlight(Flight *flight) {
 
 bool ResourceModule::isDateInRange(DateTime date,
                                    pair<DateTime, DateTime> dateRange) {
-  if (date > dateRange.first && date < dateRange.second) {
-    return true;
-  }
-  return false;
+  return (date > dateRange.first && date < dateRange.second);
 };
 
 Plane *ResourceModule::getAvailablePlane(DateTime dateTime) {
@@ -72,24 +69,32 @@ Plane *ResourceModule::getAvailablePlane(DateTime dateTime) {
   throw ResourceNotAvailableErrorMsg;
 };
 
-Pilot *ResourceModule::getAvailablePilot(DateTime dateTime) {
+vector<Pilot*> ResourceModule::getAvailablePilot(DateTime dateTime) {
   bool taken;
+  vector<Pilot*> vectorPilots = {};
+  
   for (auto pilot : pilots) {
     taken = false;
     for (auto flight : this->flightSchedule.getFlights()) {
-      for (auto pilot : flight->getPilots()) {
-        if (pilot->getResourceId() == pilot->getResourceId())
+      for (auto flightPilot : flight->getPilots()) {
+        if (pilot->getResourceId() == flightPilot->getResourceId())
           taken = isDateInRange(dateTime, flight->getBusyRange());
       }
     }
     if (taken == false)
-      return pilot;
+      vectorPilots.push_back(pilot);
   };
-  throw ResourceNotAvailableErrorMsg;
+
+  if(vectorPilots.size() == 0)
+    throw "piloto";
+
+  return vectorPilots;
 };
 
-Steward *ResourceModule::getAvailableSteward(DateTime dateTime) {
+vector<Steward*> ResourceModule::getAvailableSteward(DateTime dateTime) {
   bool taken;
+  vector<Steward*> vectorStewards = {};
+
   for (auto thisSteward : stewards) {
     taken = false;
     for (auto flight : this->flightSchedule.getFlights()) {
@@ -99,9 +104,13 @@ Steward *ResourceModule::getAvailableSteward(DateTime dateTime) {
       }
     }
     if (taken == false)
-      return thisSteward;
+      vectorStewards.push_back(thisSteward);
   };
-  throw ResourceNotAvailableErrorMsg;
+
+  if(vectorStewards.size() == 0)
+    throw "aeromoca";
+
+  return vectorStewards;
 };
 
 Runway *ResourceModule::getAvailableRunway(DateTime dateTime) {
@@ -109,7 +118,7 @@ Runway *ResourceModule::getAvailableRunway(DateTime dateTime) {
   for (auto runway : runways) {
     taken = false;
     for (auto flight : this->flightSchedule.getFlights()) {
-      if (runway->getResourceId() == runway->getResourceId())
+      if (runway->getResourceId() == flight->getRunway()->getResourceId())
         taken = isDateInRange(dateTime, flight->getBusyRange());
     }
     if (taken == false)

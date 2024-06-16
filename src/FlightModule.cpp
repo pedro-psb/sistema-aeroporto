@@ -18,6 +18,15 @@ FlightModule::FlightModule(ResourceModule *resourceModule) {
 
 Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, Destination* destination, EnumFlight flightType) {
 
+    DateTime departureDateresource = DateTime(
+        departureDate->getYear(), 
+        departureDate->getMonth(), 
+        departureDate->getDay(), 
+        departureDate->getHours(), 
+        departureDate->getMinutes(),
+        departureDate->getSeconds()
+    );
+
     //Create return date based on random numbers, but in less than 5 days
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     DateTime *retuntDate = new DateTime(
@@ -28,31 +37,43 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
         departureDate->getMinutes() + rand() % 59,
         departureDate->getSeconds() + rand() % 59
     );
-    
-    //TODO: o bloco abaixo devem ser reescritas quando o módulo de recursos ficar pronto
-    Plane *plane = new Plane(2, EnumFlight::COMERCIAL);
-    Runway *runway = new Runway("Pista 1");
-    Pilot *pilot = new Pilot("João Silva", "12345678", 123456);
-    Pilot *copilot = new Pilot("Antonio Rocha", "987654321", 987645);
-    Steward *steward = new Steward("Ana Julia", "65498731", "Feminino");
-    BoardingCrew *crew = new BoardingCrew(pilot, copilot, {steward});
 
-    Flight *flight = new Flight(
-        destination,
-        originPlace, 
-        retuntDate, 
-        departureDate, 
-        flightType,
-        plane, 
-        runway,
-        crew
-    );
+    try
+    {
+        Plane* plane = resourceModule->getAvailablePlane(departureDateresource);
+        vector<Pilot*> pilots = resourceModule->getAvailablePilot(departureDateresource);
+        Runway* runway = resourceModule->getAvailableRunway(departureDateresource);
+        vector<Steward*> stewards = resourceModule->getAvailableSteward(departureDateresource);
 
-    if (flight == nullptr) {
-        throw "Failed to create flight.";
+        if(pilots.size() < 2){
+            throw "----- Insufficient number of pilots for the flight! -----";
+        }
+
+        if(stewards.size() < 2){
+            throw "----- Insufficient number of stewards for the flight! -----";
+        }
+
+        BoardingCrew *crew = new BoardingCrew(pilots[0], pilots[1], {stewards[0], stewards[1]});
+
+        Flight *flight = new Flight(
+            destination,
+            originPlace, 
+            retuntDate, 
+            departureDate, 
+            flightType,
+            plane, 
+            runway,
+            crew
+        );
+
+        return flight;
     }
-
-    return flight;
+    catch(const char* msg)
+    {
+        std::cerr << "Erro: " << msg << std::endl;
+        throw "Failed to create flight:";
+    }
+    
 };
 
 void FlightModule::cancelFlight(Flight* flight) {
@@ -62,7 +83,7 @@ void FlightModule::cancelFlight(Flight* flight) {
         removeClientFromFlight(ticket->getClient(), flight);
     }
 
-	cout << "----- Flight successfully cancelled! -----" << endl;
+	cout << "----- Flight successfully cancelled! ----- \n" << endl;
 };
 
 void FlightModule::addClientToFlight(Client* client, Flight* flight, EnumSeat seatType) { 

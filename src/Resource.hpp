@@ -17,10 +17,7 @@ class Resource{
     public:
         Resource();
         Resource(ResourceType resourceType);
-
         ResourceType getType();
-        // string getTypeString();
-
         int getResourceId();
         void setResourceId(int id);
 };

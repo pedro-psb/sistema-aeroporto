@@ -13,6 +13,7 @@ class Pilot: public Person, public Resource
         Pilot();
         Pilot(string name, string cpf, int license);
         int getId() override;
+        string getName();
 
 };
 #endif

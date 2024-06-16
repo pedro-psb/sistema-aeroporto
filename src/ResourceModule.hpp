@@ -91,11 +91,11 @@ public:
 
   /* Try to get a Pilot that is available at a given @dateTime.
    * Raises "ResourceNotAvailableError" if its not available at that time */
-  Pilot *getAvailablePilot(DateTime datime);
+  vector<Pilot*> getAvailablePilot(DateTime dateTime);
 
   /* Try to get a Steward that is available at a given @dateTime.
    * Raises "ResourceNotAvailableError" if its not available at that time */
-  Steward *getAvailableSteward(DateTime datime);
+  vector<Steward*> getAvailableSteward(DateTime datime);
 
   /* Try to get a Runway that is available at a given @dateTime.
    * Raises "ResourceNotAvailableError" if its not available at that time */

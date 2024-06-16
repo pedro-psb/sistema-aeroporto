@@ -10,3 +10,7 @@ Steward::Steward(string name, string cpf, string gender):
 int Steward::getId(){
     return id;
 }
+
+string Steward::getName() {
+    return name;
+}
