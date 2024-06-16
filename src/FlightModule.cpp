@@ -30,14 +30,12 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
     );
     
     //TODO: o bloco abaixo devem ser reescritas quando o módulo de recursos ficar pronto
-    vector<Steward*> stewards;
     Plane *plane = new Plane(2, EnumFlight::COMERCIAL);
     Runway *runway = new Runway("Pista 1");
     Pilot *pilot = new Pilot("João Silva", "12345678", 123456);
     Pilot *copilot = new Pilot("Antonio Rocha", "987654321", 987645);
     Steward *steward = new Steward("Ana Julia", "65498731", "Feminino");
-    stewards.push_back(steward);
-    BoardingCrew *crew = new BoardingCrew(pilot, copilot, stewards);
+    BoardingCrew *crew = new BoardingCrew(pilot, copilot, {steward});
 
     Flight *flight = new Flight(
         destination,
