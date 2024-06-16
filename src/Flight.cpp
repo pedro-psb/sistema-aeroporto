@@ -110,6 +110,14 @@ Runway *Flight::getRunway(){
 		return runway;
 }
 
+vector<Pilot*> Flight::getPilots(){
+		return {crew->getMainPilot(), crew->getCopilot()};
+}
+
+vector<Steward *> Flight::getStewards(){
+		return crew->getStewards();
+}
+
 pair<DateTime, DateTime> Flight::getBusyRange(){
 	return std::make_pair(*departureDate, *returnDate);
 }

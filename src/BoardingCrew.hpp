@@ -20,12 +20,15 @@ class BoardingCrew: public Resource {
     public:
         BoardingCrew();
         BoardingCrew(Pilot* mainPilot, Pilot* copilot, vector<Steward*> Stewards);
+        BoardingCrew(Pilot* mainPilot, Pilot* copilot, vector<Steward*> Stewards);
         ~BoardingCrew();
 
         Pilot* getMainPilot();
         Pilot* getCopilot();
         vector<Steward*> getStewards();
 
+        void setMainPilot(Pilot* mainPilot);
+        void setCopilot(Pilot* copilot);
         void setMainPilot(Pilot* mainPilot);
         void setCopilot(Pilot* copilot);
         void setStewards(Steward* Stewards, int numStewards);

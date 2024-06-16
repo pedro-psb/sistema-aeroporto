@@ -36,10 +36,12 @@ vector<Steward*> BoardingCrew::getStewards() {
 
 void BoardingCrew::setMainPilot(Pilot* mainPilot) {
     mainPilot = mainPilot;
+    mainPilot = mainPilot;
 }
 
 
 void BoardingCrew::setCopilot(Pilot* copilot) {
+    copilot = copilot;
     copilot = copilot;
 }
 
