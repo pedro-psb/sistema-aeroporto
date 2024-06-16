@@ -13,5 +13,6 @@ class Steward: public Person, public Resource
         Steward();
         Steward(string name, string cpf, string gender);
         int getId() override;
+        string getName();
 };
 #endif

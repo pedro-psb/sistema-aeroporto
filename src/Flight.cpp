@@ -76,6 +76,12 @@ void Flight::printFlight(){
 	cout << "Departure Date: " << departureDate->toString() << endl;
 	cout << "Return Date: " << returnDate->toString() << endl;
 	cout << "Flight Type: " << toString(flightType) << endl;
+	cout << "Plane: " << plane->getCapacity() << endl;
+	cout << "Pilot: " <<  crew->getMainPilot()->getName() << endl;
+	cout << "Copilot: " <<  crew->getCopilot()->getName() << endl;
+	cout << "Steward 1: " << crew->getStewards()[0]->getName() << endl;
+	cout << "Steward 2: " << crew->getStewards()[1]->getName() << endl;
+	cout << "Runway: " <<  runway->getName() << endl;
 	cout << "Passengers: " << tickets.size() << endl;
 	cout << "Status: " <<  toString(status) << endl;
 	cout << "\n"<< endl;
@@ -110,14 +116,6 @@ Runway *Flight::getRunway(){
 		return runway;
 }
 
-vector<Pilot*> Flight::getPilots(){
-		return {crew->getMainPilot(), crew->getCopilot()};
-}
-
-vector<Steward *> Flight::getStewards(){
-		return crew->getStewards();
-}
-
 pair<DateTime, DateTime> Flight::getBusyRange(){
 	return std::make_pair(*departureDate, *returnDate);
 }
@@ -139,4 +137,12 @@ Ticket* Flight::getTicketByClient(Client* client){
 		}
 	}
 	return ticketReturn;
+}
+
+vector<Pilot*> Flight::getPilots(){
+		return {crew->getMainPilot(), crew->getCopilot()};
+}
+
+vector<Steward *> Flight::getStewards(){
+		return crew->getStewards();
 }

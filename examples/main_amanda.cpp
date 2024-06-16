@@ -6,18 +6,28 @@ using std::vector;
 using std::string;
 
 int main() {
-    Destination *d1 = new Destination("Belo Horizonte", 50);
-    DateTime *date1 = new DateTime(2024, 6, 9, 15, 18, 00);
+    Destination *destination = new Destination("Belo Horizonte", 50);
+    DateTime *departureDate1 = new DateTime(2024, 6, 9, 15, 18, 00);
+    DateTime *departureDate2 = new DateTime(2024, 6, 10, 15, 18, 00);
+
+    Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
+    Pilot *pilot = new Pilot("João Silva", "123654", 123);
+    Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
+    Steward *stewardA = new Steward("steward A", "123456", "F");
+    Steward *stewardB = new Steward("steward B", "654987", "F");
+    Runway *runwayA = new Runway("runway");
+    ResourceModule* resourceModule =  new ResourceModule({runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
+    FlightModule flightModule(resourceModule);
+    
+	cout << resourceModule->getAllResources().size() << endl;
+
     Client *client1 = new Client("Amanda Fiaux", "12365478978", "A753M");
     Client *client2 = new Client("Pedro Pessoa", "12365478978", "P783M");
     Client *client3 = new Client("Glaucus Miranda", "12365478978", "G908F");
 
-    ResourceModule* resourceModule = new ResourceModule();
-    FlightModule flightModule(resourceModule);
-    
     try
     {
-        Flight* flight = flightModule.createFlight("Sao Paulo", date1, d1, EnumFlight::COMERCIAL);
+        Flight* flight = flightModule.createFlight("Sao Paulo", departureDate1, destination, EnumFlight::COMERCIAL);
         flight->printFlight();
 
         flightModule.addClientToFlight(client1, flight, EnumSeat::ECONOMY_CLASS);
@@ -26,12 +36,14 @@ int main() {
         flight->printTickets();
         // flightModule.removeClientFromFlight(client3, flight);
         flight->printFlight();
+
+	    cout << "----- Canceling Flight... -----" << endl;
         flightModule.cancelFlight(flight);
         flight->printFlight();
     }
-    catch(const std::exception& e)
+    catch(const char* msg)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "Erro: " << msg << std::endl;
     }
 
   return 0;

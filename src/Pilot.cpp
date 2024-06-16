@@ -8,3 +8,7 @@ int Pilot::getId() {
     return id;
 }
 
+string Pilot::getName() {
+    return name;
+}
+
