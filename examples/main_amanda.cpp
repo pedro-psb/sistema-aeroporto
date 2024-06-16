@@ -7,8 +7,7 @@ using std::string;
 
 int main() {
     Destination *destination = new Destination("Belo Horizonte", 50);
-    DateTime *departureDate1 = new DateTime(2024, 6, 9, 15, 18, 00);
-    DateTime *departureDate2 = new DateTime(2024, 6, 10, 15, 18, 00);
+    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
 
     Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
     Pilot *pilot = new Pilot("João Silva", "123654", 123);
@@ -27,7 +26,7 @@ int main() {
 
     try
     {
-        Flight* flight = flightModule.createFlight("Sao Paulo", departureDate1, destination, EnumFlight::COMERCIAL);
+        Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
         flight->printFlight();
 
         flightModule.addClientToFlight(client1, flight, EnumSeat::ECONOMY_CLASS);
