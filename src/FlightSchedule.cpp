@@ -16,10 +16,12 @@ void FlightSchedule::addFlight(vector<Flight *> Flights) {
 void FlightSchedule::addFlight(Flight *flight) { flights.push_back(flight); }
 
 void FlightSchedule::removeFlight(Flight *flight) {
-  auto it = std::find(flights.begin(), flights.end(), flight);
+/*  auto it = std::find(flights.begin(), flights.end(), flight);
   if (it != flights.end()) {
     flights.erase(it);
-  }
+  }*/
+auto  it = std::remove(flights.begin(), flights.end(), flight);
+	flights.erase(it, flights.end());
 }
 
 int FlightSchedule::count() { return flights.size(); }
