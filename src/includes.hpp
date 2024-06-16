@@ -2,27 +2,25 @@
 #ifndef INCLUDES_HPP
 #define INCLUDES_HPP
 
-#include <string>
 #include <iostream>
+#include <string>
 #include <vector>
 
-#include "Flight.hpp"
-#include "Person.hpp"
-#include "Steward.hpp"
-#include "Ticket.hpp"
+#include "BoardingCrew.hpp"
+#include "Client.hpp"
 #include "DateTime.hpp"
 #include "Destination.hpp"
-#include "Client.hpp"
-#include "Pilot.hpp"
 #include "EnumFlight.hpp"
-#include "EnumSeat.hpp"
 #include "EnumFlightStatus.hpp"
-#include "Resource.hpp"
-#include "Plane.hpp"
-#include "Runway.hpp"
+#include "EnumSeat.hpp"
+#include "Flight.hpp"
 #include "FlightSchedule.hpp"
-#include "BoardingCrew.hpp"
-
-
+#include "Person.hpp"
+#include "Pilot.hpp"
+#include "Plane.hpp"
+#include "Resource.hpp"
+#include "Runway.hpp"
+#include "Steward.hpp"
+#include "Ticket.hpp"
 
 #endif // INCLUDES_HPP

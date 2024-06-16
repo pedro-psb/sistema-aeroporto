@@ -4,13 +4,13 @@
 using std::string;
 
 enum class EnumFlightStatus {
-    SCHEDULED,
-    CONFIRMED,
-    IN_FLIGHT,
-    COMPLETED,
-    CANCELLED
+  SCHEDULED,
+  CONFIRMED,
+  IN_FLIGHT,
+  COMPLETED,
+  CANCELLED
 };
 
 const string toString(EnumFlightStatus flightStatus);
 
-#endif 
+#endif

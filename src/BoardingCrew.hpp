@@ -1,48 +1,47 @@
 #ifndef BOARDINGCREW
 #define BOARDINGCREW
 
+#include "Pilot.hpp"
 #include "Resource.hpp"
 #include "Steward.hpp"
-#include "Pilot.hpp"
 
-#include <vector> 
+#include <vector>
 
 using std::vector;
 
+class BoardingCrew : public Resource {
+private:
+  Pilot *mainPilot;
+  Pilot *copilot;
+  vector<Steward *> stewards;
+  // int numStewards;
 
-class BoardingCrew: public Resource {
-    private:
-        Pilot *mainPilot;
-        Pilot *copilot;
-        vector<Steward*> stewards;
-        //int numStewards;
+public:
+  BoardingCrew();
+  BoardingCrew(Pilot *mainPilot, Pilot *copilot, vector<Steward *> Stewards);
+  ~BoardingCrew();
 
-    public:
-        BoardingCrew();
-        BoardingCrew(Pilot* mainPilot, Pilot* copilot, vector<Steward*> Stewards);
-        ~BoardingCrew();
+  Pilot *getMainPilot();
+  Pilot *getCopilot();
+  vector<Steward *> getStewards();
 
-        Pilot* getMainPilot();
-        Pilot* getCopilot();
-        vector<Steward*> getStewards();
+  void setMainPilot(Pilot *mainPilot);
+  void setCopilot(Pilot *copilot);
 
-        void setMainPilot(Pilot* mainPilot);
-        void setCopilot(Pilot* copilot);
+  /* Add a vector of Stewards all at once. */
+  void addSteward(vector<Steward *> stewards);
 
-        /* Add a vector of Stewards all at once. */
-        void addSteward(vector<Steward*> stewards);
+  /* Add a single Steward. */
+  void addSteward(Steward *Steward);
 
-        /* Add a single Steward. */
-        void addSteward(Steward* Steward);
+  /* Remove a single Steward. */
+  void removeSteward(Steward *Steward);
 
-        /* Remove a single Steward. */
-        void removeSteward(Steward* Steward);
+  /* Get number of Stewards */
+  int countStewards();
 
-        /* Get number of Stewards */
-        int countStewards();
-
-        /* Clear Stewards table */
-        int clearStewards();
+  /* Clear Stewards table */
+  int clearStewards();
 };
 
 #endif

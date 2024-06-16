@@ -1,37 +1,38 @@
-#include "Flight.hpp" 
+#include "Flight.hpp"
 
-#include <vector> 
+#include <vector>
 using std::vector;
 
 #ifndef FLIGHTSCHEDULE
-#define FLIGHTSCHEDULE 
+#define FLIGHTSCHEDULE
 
-class FlightSchedule{
-    private:
-        vector<Flight*> flights;
-    public:
-        /* Create FlightSchedule with empty */
-        FlightSchedule();
+class FlightSchedule {
+private:
+  vector<Flight *> flights;
 
-        /* Create FlightSchedule with initial flight vector */
-        FlightSchedule(vector<Flight*> flights);
+public:
+  /* Create FlightSchedule with empty */
+  FlightSchedule();
 
-        /* Get a read-only copy of all flights. */
-        vector<Flight*> getFlights();
+  /* Create FlightSchedule with initial flight vector */
+  FlightSchedule(vector<Flight *> flights);
 
-        /* Add a vector of flights all at once. */
-        void addFlight(vector<Flight*> flights);
+  /* Get a read-only copy of all flights. */
+  vector<Flight *> getFlights();
 
-        /* Add a single flight. */
-        void addFlight(Flight* flight);
+  /* Add a vector of flights all at once. */
+  void addFlight(vector<Flight *> flights);
 
-        /* Remove a single flight. */
-        void removeFlight(Flight* flight);
+  /* Add a single flight. */
+  void addFlight(Flight *flight);
 
-        /* Get number of flights */
-        int count();
+  /* Remove a single flight. */
+  void removeFlight(Flight *flight);
 
-        /* Clear flights table */
-        int clearFlights();
+  /* Get number of flights */
+  int count();
+
+  /* Clear flights table */
+  int clearFlights();
 };
 #endif

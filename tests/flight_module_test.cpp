@@ -9,134 +9,148 @@
 using std::string, std::cout, std::endl;
 
 TEST_CASE("Create Flight") {
-    //Given the information below
-    Destination *destination = new Destination("Belo Horizonte", 50);
-    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
-    Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
-    Pilot *pilot = new Pilot("João Silva", "123654", 123);
-    Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
-    Steward *stewardA = new Steward("steward A", "123456", "F");
-    Steward *stewardB = new Steward("steward B", "654987", "F");
-    Runway *runwayA = new Runway("runway");
-    ResourceModule* resourceModule =  new ResourceModule({runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
-    FlightModule flightModule(resourceModule);
+  // Given the information below
+  Destination *destination = new Destination("Belo Horizonte", 50);
+  DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+  Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
+  Pilot *pilot = new Pilot("João Silva", "123654", 123);
+  Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
+  Steward *stewardA = new Steward("steward A", "123456", "F");
+  Steward *stewardB = new Steward("steward B", "654987", "F");
+  Runway *runwayA = new Runway("runway");
+  ResourceModule *resourceModule = new ResourceModule(
+      {runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
+  FlightModule flightModule(resourceModule);
 
-    //When to create the flight
-    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
-    
-    //Then create a scheduled flight without a ticket
-    REQUIRE(flight->getStatus() == EnumFlightStatus::SCHEDULED);
-    REQUIRE(flight->getTickets().size() == 0);
+  // When to create the flight
+  Flight *flight = flightModule.createFlight(
+      "Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+
+  // Then create a scheduled flight without a ticket
+  REQUIRE(flight->getStatus() == EnumFlightStatus::SCHEDULED);
+  REQUIRE(flight->getTickets().size() == 0);
 }
 
 TEST_CASE("Cancel Flight") {
-    //Given the information below
-    Destination *destination = new Destination("Belo Horizonte", 50);
-    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
-    Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
-    Pilot *pilot = new Pilot("João Silva", "123654", 123);
-    Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
-    Steward *stewardA = new Steward("steward A", "123456", "F");
-    Steward *stewardB = new Steward("steward B", "654987", "F");
-    Runway *runwayA = new Runway("runway");
-    ResourceModule* resourceModule =  new ResourceModule({runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
-    FlightModule flightModule(resourceModule);
-    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+  // Given the information below
+  Destination *destination = new Destination("Belo Horizonte", 50);
+  DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+  Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
+  Pilot *pilot = new Pilot("João Silva", "123654", 123);
+  Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
+  Steward *stewardA = new Steward("steward A", "123456", "F");
+  Steward *stewardB = new Steward("steward B", "654987", "F");
+  Runway *runwayA = new Runway("runway");
+  ResourceModule *resourceModule = new ResourceModule(
+      {runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
+  FlightModule flightModule(resourceModule);
+  Flight *flight = flightModule.createFlight(
+      "Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
 
-    //When to cancel the flight 
-    flightModule.cancelFlight(flight);
-    
-    //Then the flight status is "cancelled" 
-    REQUIRE(flight->getStatus() == EnumFlightStatus::CANCELLED);
+  // When to cancel the flight
+  flightModule.cancelFlight(flight);
+
+  // Then the flight status is "cancelled"
+  REQUIRE(flight->getStatus() == EnumFlightStatus::CANCELLED);
 }
 
 TEST_CASE("Add Client To Flight") {
-    //Given the information below
-    Destination *destination = new Destination("Belo Horizonte", 50);
-    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
-    Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
-    Pilot *pilot = new Pilot("João Silva", "123654", 123);
-    Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
-    Steward *stewardA = new Steward("steward A", "123456", "F");
-    Steward *stewardB = new Steward("steward B", "654987", "F");
-    Runway *runwayA = new Runway("runway");
-    ResourceModule* resourceModule =  new ResourceModule({runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
-    FlightModule flightModule(resourceModule);
-    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
-    Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
+  // Given the information below
+  Destination *destination = new Destination("Belo Horizonte", 50);
+  DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+  Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
+  Pilot *pilot = new Pilot("João Silva", "123654", 123);
+  Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
+  Steward *stewardA = new Steward("steward A", "123456", "F");
+  Steward *stewardB = new Steward("steward B", "654987", "F");
+  Runway *runwayA = new Runway("runway");
+  ResourceModule *resourceModule = new ResourceModule(
+      {runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
+  FlightModule flightModule(resourceModule);
+  Flight *flight = flightModule.createFlight(
+      "Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+  Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
 
-    //When add client to flight
-    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
-    
-    //Then the number of Ticket must be 1
-    REQUIRE(flight->getTickets().size() == 1);
+  // When add client to flight
+  flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
+
+  // Then the number of Ticket must be 1
+  REQUIRE(flight->getTickets().size() == 1);
 }
 
 TEST_CASE("Remove Client From Flight") {
-    //Given the information below
-    Destination *destination = new Destination("Belo Horizonte", 50);
-    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
-    Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
-    Pilot *pilot = new Pilot("João Silva", "123654", 123);
-    Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
-    Steward *stewardA = new Steward("steward A", "123456", "F");
-    Steward *stewardB = new Steward("steward B", "654987", "F");
-    Runway *runwayA = new Runway("runway");
-    ResourceModule* resourceModule =  new ResourceModule({runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
-    FlightModule flightModule(resourceModule);
-    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
-    Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
-    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
+  // Given the information below
+  Destination *destination = new Destination("Belo Horizonte", 50);
+  DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+  Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
+  Pilot *pilot = new Pilot("João Silva", "123654", 123);
+  Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
+  Steward *stewardA = new Steward("steward A", "123456", "F");
+  Steward *stewardB = new Steward("steward B", "654987", "F");
+  Runway *runwayA = new Runway("runway");
+  ResourceModule *resourceModule = new ResourceModule(
+      {runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
+  FlightModule flightModule(resourceModule);
+  Flight *flight = flightModule.createFlight(
+      "Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+  Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
+  flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
 
-    //When remove client from flight
-    flightModule.removeClientFromFlight(client, flight);
-    
-    //Then the number of Ticket must be 0
-    REQUIRE(flight->getTickets().size() == 0);
+  // When remove client from flight
+  flightModule.removeClientFromFlight(client, flight);
+
+  // Then the number of Ticket must be 0
+  REQUIRE(flight->getTickets().size() == 0);
 }
 
-TEST_CASE("Calculate Ticket Price - Flight COMERCIAL, Seat ECONOMY_CLASS, Distance 50") {
-    //Given the information below 
-    Destination *destination = new Destination("Belo Horizonte", 50);
-    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
-    Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
-    Pilot *pilot = new Pilot("João Silva", "123654", 123);
-    Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
-    Steward *stewardA = new Steward("steward A", "123456", "F");
-    Steward *stewardB = new Steward("steward B", "654987", "F");
-    Runway *runwayA = new Runway("runway");
-    ResourceModule* resourceModule =  new ResourceModule({runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
-    FlightModule flightModule(resourceModule);
+TEST_CASE("Calculate Ticket Price - Flight COMERCIAL, Seat ECONOMY_CLASS, "
+          "Distance 50") {
+  // Given the information below
+  Destination *destination = new Destination("Belo Horizonte", 50);
+  DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+  Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
+  Pilot *pilot = new Pilot("João Silva", "123654", 123);
+  Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
+  Steward *stewardA = new Steward("steward A", "123456", "F");
+  Steward *stewardB = new Steward("steward B", "654987", "F");
+  Runway *runwayA = new Runway("runway");
+  ResourceModule *resourceModule = new ResourceModule(
+      {runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
+  FlightModule flightModule(resourceModule);
 
-    //When the flight is COMERCIAL and the seat is ECONOMY_CLASS  
-    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
-    Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
-    flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
-    Ticket* ticketTest = flight->getTicketByClient(client);
-    
-    //Then the ticket value must be 2799
-    REQUIRE(ticketTest->getPrice() == 2799);
+  // When the flight is COMERCIAL and the seat is ECONOMY_CLASS
+  Flight *flight = flightModule.createFlight(
+      "Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
+  Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
+  flightModule.addClientToFlight(client, flight, EnumSeat::ECONOMY_CLASS);
+  Ticket *ticketTest = flight->getTicketByClient(client);
+
+  // Then the ticket value must be 2799
+  REQUIRE(ticketTest->getPrice() == 2799);
 }
 
-TEST_CASE("Calculate Ticket Price - Flight EXECUTIVO, Seat FIRST_CLASS, Distance 50") {
-    //Given the information below 
-    Destination *destination = new Destination("Belo Horizonte", 50);
-    DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
-    Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
-    Pilot *pilot = new Pilot("João Silva", "123654", 123);
-    Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
-    Steward *stewardA = new Steward("steward A", "123456", "F");
-    Steward *stewardB = new Steward("steward B", "654987", "F");
-    Runway *runwayA = new Runway("runway");
-    ResourceModule* resourceModule =  new ResourceModule({runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
-    FlightModule flightModule(resourceModule);
+TEST_CASE("Calculate Ticket Price - Flight EXECUTIVO, Seat FIRST_CLASS, "
+          "Distance 50") {
+  // Given the information below
+  Destination *destination = new Destination("Belo Horizonte", 50);
+  DateTime *departureDate = new DateTime(2024, 6, 9, 15, 18, 00);
+  Plane *plane = new Plane(10, EnumFlight::COMERCIAL);
+  Pilot *pilot = new Pilot("João Silva", "123654", 123);
+  Pilot *copilot = new Pilot("Erick Rocha", "987564", 123);
+  Steward *stewardA = new Steward("steward A", "123456", "F");
+  Steward *stewardB = new Steward("steward B", "654987", "F");
+  Runway *runwayA = new Runway("runway");
+  ResourceModule *resourceModule = new ResourceModule(
+      {runwayA}, {plane}, {pilot, copilot}, {stewardA, stewardB});
+  FlightModule flightModule(resourceModule);
 
-    //When the flight is EXECUTIVO and the seat is FIRST_CLASS
-    Flight* flight = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::BUSINESS);
-    Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
-    flightModule.addClientToFlight(client, flight, EnumSeat::FIRST_CLASS);
-    Ticket* ticketTest = flight->getTicketByClient(client);
-    
-    //Then the ticket value must be 4615
-    REQUIRE(ticketTest->getPrice() == 4615);
+  // When the flight is EXECUTIVO and the seat is FIRST_CLASS
+  Flight *flight = flightModule.createFlight("Sao Paulo", departureDate,
+                                             destination, EnumFlight::BUSINESS);
+  Client *client = new Client("Amanda Fiaux", "12365478978", "A753M");
+  flightModule.addClientToFlight(client, flight, EnumSeat::FIRST_CLASS);
+  Ticket *ticketTest = flight->getTicketByClient(client);
+
+  // Then the ticket value must be 4615
+  REQUIRE(ticketTest->getPrice() == 4615);
 }

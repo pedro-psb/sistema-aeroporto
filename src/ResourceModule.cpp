@@ -69,10 +69,10 @@ Plane *ResourceModule::getAvailablePlane(DateTime dateTime) {
   throw ResourceNotAvailableErrorMsg;
 };
 
-vector<Pilot*> ResourceModule::getAvailablePilot(DateTime dateTime) {
+vector<Pilot *> ResourceModule::getAvailablePilot(DateTime dateTime) {
   bool taken;
-  vector<Pilot*> vectorPilots = {};
-  
+  vector<Pilot *> vectorPilots = {};
+
   for (auto pilot : pilots) {
     taken = false;
     for (auto flight : this->flightSchedule.getFlights()) {
@@ -85,15 +85,15 @@ vector<Pilot*> ResourceModule::getAvailablePilot(DateTime dateTime) {
       vectorPilots.push_back(pilot);
   };
 
-  if(vectorPilots.size() == 0)
+  if (vectorPilots.size() == 0)
     throw ResourceNotAvailableErrorMsg;
 
   return vectorPilots;
 };
 
-vector<Steward*> ResourceModule::getAvailableSteward(DateTime dateTime) {
+vector<Steward *> ResourceModule::getAvailableSteward(DateTime dateTime) {
   bool taken;
-  vector<Steward*> vectorStewards = {};
+  vector<Steward *> vectorStewards = {};
 
   for (auto thisSteward : stewards) {
     taken = false;
@@ -107,7 +107,7 @@ vector<Steward*> ResourceModule::getAvailableSteward(DateTime dateTime) {
       vectorStewards.push_back(thisSteward);
   };
 
-  if(vectorStewards.size() == 0)
+  if (vectorStewards.size() == 0)
     throw ResourceNotAvailableErrorMsg;
 
   return vectorStewards;

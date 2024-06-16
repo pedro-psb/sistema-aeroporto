@@ -8,7 +8,6 @@ using std::string, std::cout, std::endl;
 // //   bool getResourceRaise = false;
 // //   getResourceRaise = false;
 
-
 // Resource *ResourceModuleMock::getAvailableResource(Resource resource,
 //                                           DateTime dateTime) {
 //   cout << "Mock getResource being called" << endl;

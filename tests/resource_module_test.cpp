@@ -76,7 +76,8 @@ TEST_CASE("Given a fresh ResourceModule with 1 available resource of each type",
   SECTION("When try to get a Steward for a DateTime and one is available.") {
     CHECK(resourceModule.getAllFlights().size() == 0);
     DateTime someTime = DateTime(2000, 1, 1, 1, 00, 00);
-    vector<Steward *> someStewards = resourceModule.getAvailableSteward(someTime);
+    vector<Steward *> someStewards =
+        resourceModule.getAvailableSteward(someTime);
     THEN("We get the request steward") {
       REQUIRE(someStewards.size() == 1);
       REQUIRE(someStewards[0]->getResourceId() == stewardA->getResourceId());
@@ -149,7 +150,8 @@ TEST_CASE("Given a fresh ResourceModule with 1 unavailable resource",
     SECTION("When free a Flight.") {
       resourceModule.freeFlight(flight);
       THEN("Can use its locked resources again") {
-        Steward *returnedSteward = resourceModule.getAvailableSteward(someTime)[0];
+        Steward *returnedSteward =
+            resourceModule.getAvailableSteward(someTime)[0];
       }
     };
   };

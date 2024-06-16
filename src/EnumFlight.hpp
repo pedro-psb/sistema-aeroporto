@@ -3,14 +3,9 @@
 #include <string>
 using std::string;
 
-enum class EnumFlight {
-    MILITARY,
-    CARGO,
-    COMERCIAL,
-    BUSINESS
-};
+enum class EnumFlight { MILITARY, CARGO, COMERCIAL, BUSINESS };
 
 string toString(EnumFlight flight);
 const double getValue(EnumFlight seat);
 
-#endif 
+#endif

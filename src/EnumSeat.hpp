@@ -4,13 +4,13 @@
 using std::string;
 
 enum class EnumSeat {
-    ECONOMY_CLASS,
-    PREMIUM_ECONOMY_CLASS,
-    BUSINESS_CLASS,
-    FIRST_CLASS
+  ECONOMY_CLASS,
+  PREMIUM_ECONOMY_CLASS,
+  BUSINESS_CLASS,
+  FIRST_CLASS
 };
 
 string toString(EnumSeat seat);
 const double getValue(EnumSeat seat);
 
-#endif 
+#endif

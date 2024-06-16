@@ -1,7 +1,7 @@
 #include "Client.hpp"
 #include "Destination.hpp"
-#include "Ticket.hpp"
 #include "Flight.hpp"
+#include "Ticket.hpp"
 
 #ifndef SALES_MOD
 #define SALES_MOD
