@@ -2,10 +2,9 @@
 #include "../src/ResourceModule.hpp"
 
 TEST_CASE("Given a fresh ResourceModule with 8 resources", "[functional]") {
-  vector<Plane *> planes{new Plane(10, EnumFlight::COMERCIAL),
-                         new Plane(10, EnumFlight::EXECUTIVO),
-                         new Plane(10, EnumFlight::CARGA),
-                         new Plane(10, EnumFlight::MILITAR)};
+  vector<Plane *> planes{
+      new Plane(10, EnumFlight::COMERCIAL), new Plane(10, EnumFlight::BUSINESS),
+      new Plane(10, EnumFlight::CARGO), new Plane(10, EnumFlight::MILITARY)};
   vector<Pilot *> pilots{new Pilot("fulano", "111.111.111-11", 100)};
   vector<Steward *> stewards{new Steward("fulana", "222.222.222-22", "woman")};
   vector<Runway *> runways{new Runway("foo"), new Runway("bar")};
@@ -55,13 +54,39 @@ TEST_CASE("Given a fresh ResourceModule with 1 available resource of each type",
   ResourceModule resourceModule =
       ResourceModule({runwayA}, {planeA}, {pilotA}, {stewardA});
 
-  // TODO: do the same for the rest of Resources
-  SECTION("When try to get a Plane for a DateTime and one available.") {
+  SECTION("When try to get a Plane for a DateTime and one is available.") {
     CHECK(resourceModule.getAllFlights().size() == 0);
     DateTime someTime = DateTime(2000, 1, 1, 1, 00, 00);
     Plane *somePlane = resourceModule.getAvailablePlane(someTime);
     THEN("We get the request plane") {
       REQUIRE(somePlane->getResourceId() == planeA->getResourceId());
+    }
+  };
+
+  SECTION("When try to get a Pilot for a DateTime and one is available.") {
+    CHECK(resourceModule.getAllFlights().size() == 0);
+    DateTime someTime = DateTime(2000, 1, 1, 1, 00, 00);
+    Pilot *somePilot = resourceModule.getAvailablePilot(someTime);
+    THEN("We get the request pilot") {
+      REQUIRE(somePilot->getResourceId() == pilotA->getResourceId());
+    }
+  };
+
+  SECTION("When try to get a Steward for a DateTime and one is available.") {
+    CHECK(resourceModule.getAllFlights().size() == 0);
+    DateTime someTime = DateTime(2000, 1, 1, 1, 00, 00);
+    Steward *someSteward = resourceModule.getAvailableSteward(someTime);
+    THEN("We get the request steward") {
+      REQUIRE(someSteward->getResourceId() == stewardA->getResourceId());
+    }
+  };
+
+  SECTION("When try to get a Runway for a DateTime and one is available.") {
+    CHECK(resourceModule.getAllFlights().size() == 0);
+    DateTime someTime = DateTime(2000, 1, 1, 1, 00, 00);
+    Runway *someRunway = resourceModule.getAvailableRunway(someTime);
+    THEN("We get the request runway") {
+      REQUIRE(someRunway->getResourceId() == runwayA->getResourceId());
     }
   };
 }
@@ -76,29 +101,66 @@ TEST_CASE("Given a fresh ResourceModule with 1 unavailable resource",
   DateTime *departureDate = new DateTime(2000, 1, 1, 0, 0, 0);
   DateTime *returnDate = new DateTime(2000, 1, 3, 0, 0, 0); // 2 days later
 
-  Flight *flight = new Flight(new Destination("Belo Horizonte", 50), "here",
-                              returnDate, departureDate, EnumFlight::COMERCIAL,
-                              plane, new Runway("Pista 1"),
-                              new BoardingCrew(pilot, copilot, steward, 5));
+  Flight *flight =
+      new Flight(new Destination("Belo Horizonte", 50), "here", returnDate,
+                 departureDate, EnumFlight::COMERCIAL, plane, runway,
+                 new BoardingCrew(pilot, copilot, {steward}));
 
   ResourceModule resourceModule =
       ResourceModule({runway}, {plane}, {pilot}, {steward});
 
   CHECK(resourceModule.getAllFlights().size() == 0);
   resourceModule.saveFlight(flight);
-  CHECK(resourceModule.getAllFlights().size() == 1);
+  DateTime someTime = DateTime(2000, 1, 2, 0, 0, 0);
 
-  SECTION("When try to get a Resource that is being used at a DateTime.") {
-    DateTime someTime = DateTime(2000, 1, 2, 0, 0, 0);
-    THEN("We get a No Resource Available error.") {
+  SECTION("When try to get a Plane that is being used at a DateTime.") {
+    THEN("We get a 'No Resource Available' error.") {
       REQUIRE_THROWS_WITH(resourceModule.getAvailablePlane(someTime),
                           ResourceNotAvailableErrorMsg);
     }
-
     SECTION("When free a Flight.") {
       resourceModule.freeFlight(flight);
       THEN("Can use its locked resources again") {
         Plane *returnedPlane = resourceModule.getAvailablePlane(someTime);
+      }
+    };
+  };
+
+  SECTION("When try to get a Pilot that is being used at a DateTime.") {
+    THEN("We get a 'No Resource Available' error.") {
+      REQUIRE_THROWS_WITH(resourceModule.getAvailablePilot(someTime),
+                          ResourceNotAvailableErrorMsg);
+    }
+    SECTION("When free a Flight.") {
+      resourceModule.freeFlight(flight);
+      THEN("Can use its locked resources again") {
+        Pilot *returnedPilot = resourceModule.getAvailablePilot(someTime);
+      }
+    };
+  };
+
+  SECTION("When try to get a Steward that is being used at a DateTime.") {
+    THEN("We get a 'No Resource Available' error.") {
+      REQUIRE_THROWS_WITH(resourceModule.getAvailableSteward(someTime),
+                          ResourceNotAvailableErrorMsg);
+    }
+    SECTION("When free a Flight.") {
+      resourceModule.freeFlight(flight);
+      THEN("Can use its locked resources again") {
+        Steward *returnedSteward = resourceModule.getAvailableSteward(someTime);
+      }
+    };
+  };
+
+  SECTION("When try to get a Runway that is being used at a DateTime.") {
+    THEN("We get a 'No Resource Available' error.") {
+      REQUIRE_THROWS_WITH(resourceModule.getAvailableRunway(someTime),
+                          ResourceNotAvailableErrorMsg);
+    }
+    SECTION("When free a Flight.") {
+      resourceModule.freeFlight(flight);
+      THEN("Can use its locked resources again") {
+        Runway *returnedRunway = resourceModule.getAvailableRunway(someTime);
       }
     };
   };

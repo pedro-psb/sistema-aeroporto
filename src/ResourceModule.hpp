@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 #include <vector>
 
 #include "Client.hpp"
@@ -62,10 +63,6 @@ public:
   ResourceModule(vector<Runway *> runways, vector<Plane *> planes,
                  vector<Pilot *> pilots, vector<Steward *> stewards);
 
-  /* Try to get a Plane that is available at a given @dateTime.
-   * Raises "ResourceNotAvailableError" if its not available at that time */
-  Plane *getAvailablePlane(DateTime datime);
-
   /* Adds a @flight to the flightTable.
    * Raises "FlighAlreadyExistError" if a Flight with the same id already exist.
    */
@@ -84,6 +81,25 @@ public:
 
   /* Get a read-only copy of the flightTable. */
   vector<Flight *> getAllFlights();
+
+  /* Check if a @date is inside a @dateRage */
+  bool isDateInRange(DateTime date, pair<DateTime, DateTime> dateRange);
+
+  /* Try to get a Plane that is available at a given @dateTime.
+   * Raises "ResourceNotAvailableError" if its not available at that time */
+  Plane *getAvailablePlane(DateTime datime);
+
+  /* Try to get a Pilot that is available at a given @dateTime.
+   * Raises "ResourceNotAvailableError" if its not available at that time */
+  Pilot *getAvailablePilot(DateTime datime);
+
+  /* Try to get a Steward that is available at a given @dateTime.
+   * Raises "ResourceNotAvailableError" if its not available at that time */
+  Steward *getAvailableSteward(DateTime datime);
+
+  /* Try to get a Runway that is available at a given @dateTime.
+   * Raises "ResourceNotAvailableError" if its not available at that time */
+  Runway *getAvailableRunway(DateTime datime);
 };
 
 #endif

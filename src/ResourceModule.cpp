@@ -50,20 +50,21 @@ Flight *ResourceModule::freeFlight(Flight *flight) {
   throw NotInStorageErrorMsg;
 };
 
+bool ResourceModule::isDateInRange(DateTime date,
+                                   pair<DateTime, DateTime> dateRange) {
+  if (date > dateRange.first && date < dateRange.second) {
+    return true;
+  }
+  return false;
+};
+
 Plane *ResourceModule::getAvailablePlane(DateTime dateTime) {
   bool taken;
   for (auto plane : planes) {
-    // check if this is being used within the requested dateTime
     taken = false;
     for (auto flight : this->flightSchedule.getFlights()) {
-      if (flight->getPlane()->getResourceId() == plane->getResourceId()) {
-        cout << "found plane " << plane->getResourceId() << " in flight "
-             << flight->getId() << endl;
-        auto busyRange = flight->getBusyRange();
-        if (dateTime > busyRange.first && dateTime < busyRange.second) {
-          taken = true;
-        }
-      }
+      if (flight->getPlane()->getResourceId() == plane->getResourceId())
+        taken = isDateInRange(dateTime, flight->getBusyRange());
     }
     if (taken == false)
       return plane;
@@ -71,3 +72,48 @@ Plane *ResourceModule::getAvailablePlane(DateTime dateTime) {
   throw ResourceNotAvailableErrorMsg;
 };
 
+Pilot *ResourceModule::getAvailablePilot(DateTime dateTime) {
+  bool taken;
+  for (auto pilot : pilots) {
+    taken = false;
+    for (auto flight : this->flightSchedule.getFlights()) {
+      for (auto pilot : flight->getPilots()) {
+        if (pilot->getResourceId() == pilot->getResourceId())
+          taken = isDateInRange(dateTime, flight->getBusyRange());
+      }
+    }
+    if (taken == false)
+      return pilot;
+  };
+  throw ResourceNotAvailableErrorMsg;
+};
+
+Steward *ResourceModule::getAvailableSteward(DateTime dateTime) {
+  bool taken;
+  for (auto thisSteward : stewards) {
+    taken = false;
+    for (auto flight : this->flightSchedule.getFlights()) {
+      for (auto flightSteward : flight->getStewards()) {
+        if (thisSteward->getResourceId() == flightSteward->getResourceId())
+          taken = isDateInRange(dateTime, flight->getBusyRange());
+      }
+    }
+    if (taken == false)
+      return thisSteward;
+  };
+  throw ResourceNotAvailableErrorMsg;
+};
+
+Runway *ResourceModule::getAvailableRunway(DateTime dateTime) {
+  bool taken;
+  for (auto runway : runways) {
+    taken = false;
+    for (auto flight : this->flightSchedule.getFlights()) {
+      if (runway->getResourceId() == runway->getResourceId())
+        taken = isDateInRange(dateTime, flight->getBusyRange());
+    }
+    if (taken == false)
+      return runway;
+  };
+  throw ResourceNotAvailableErrorMsg;
+};

@@ -35,7 +35,7 @@ Flight *FlightModule::createFlight(string originPlace, DateTime* departureDate, 
     Pilot *pilot = new Pilot("João Silva", "12345678", 123456);
     Pilot *copilot = new Pilot("Antonio Rocha", "987654321", 987645);
     Steward *steward = new Steward("Ana Julia", "65498731", "Feminino");
-    BoardingCrew *crew = new BoardingCrew(pilot, copilot, steward, 5);
+    BoardingCrew *crew = new BoardingCrew(pilot, copilot, {steward});
 
     Flight *flight = new Flight(
         destination,
