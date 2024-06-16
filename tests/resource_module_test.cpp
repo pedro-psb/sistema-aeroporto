@@ -93,7 +93,6 @@ TEST_CASE("Given a fresh ResourceModule with 1 available resource of each type",
 
 TEST_CASE("Given a fresh ResourceModule with 1 unavailable resource",
           "[functional]") {
-  vector<Steward*> stewards;
   Pilot *pilot = new Pilot("foo", "bar", 123);
   Pilot *copilot = new Pilot("foo", "bar", 123);
   Steward *steward = new Steward("foo", "bar", "eggs");
@@ -101,11 +100,11 @@ TEST_CASE("Given a fresh ResourceModule with 1 unavailable resource",
   Plane *plane = new Plane(2, EnumFlight::COMERCIAL);
   DateTime *departureDate = new DateTime(2000, 1, 1, 0, 0, 0);
   DateTime *returnDate = new DateTime(2000, 1, 3, 0, 0, 0); // 2 days later
-  stewards.push_back(steward);
-  Flight *flight = new Flight(new Destination("Belo Horizonte", 50), "here",
-                              returnDate, departureDate, EnumFlight::COMERCIAL,
-                              plane, new Runway("Pista 1"),
-                              new BoardingCrew(pilot, copilot, stewards));
+
+  Flight *flight =
+      new Flight(new Destination("Belo Horizonte", 50), "here", returnDate,
+                 departureDate, EnumFlight::COMERCIAL, plane, runway,
+                 new BoardingCrew(pilot, copilot, {steward}));
 
   ResourceModule resourceModule =
       ResourceModule({runway}, {plane}, {pilot}, {steward});
