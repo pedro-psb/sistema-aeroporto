@@ -18,7 +18,7 @@ class BoardingCrew: public Resource {
         //int numStewards;
 
     public:
-        // BoardingCrew();
+        BoardingCrew();
         BoardingCrew(Pilot* mainPilot, Pilot* copilot, vector<Steward*> Stewards);
         ~BoardingCrew();
 

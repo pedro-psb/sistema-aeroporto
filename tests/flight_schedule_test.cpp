@@ -13,9 +13,9 @@ TEST_CASE("Testando a classe FlightSchedule", "[FlightSchedule]") {
     FlightModule flightModule(resourceModule);
 
     //When to create the flight
-    Flight* flight1 = flightModule.createFlight("Sao Paulo", departureDate, destination, EnumFlight::COMERCIAL);
-    Flight* flight2 = flightModule.createFlight("Brasilia", departureDate, destination, EnumFlight::CARGO);
-    Flight* flight3 = flightModule.createFlight("Rio de Janeiro", departureDate, destination, EnumFlight::BUSINESS);
+    Flight* flight1 = new Flight();
+    Flight* flight2 = new Flight();
+    Flight* flight3 = new Flight();
     vector<Flight*> flights;
     flights.push_back(flight1);
     flights.push_back(flight2);

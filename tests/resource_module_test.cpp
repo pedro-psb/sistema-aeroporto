@@ -66,18 +66,20 @@ TEST_CASE("Given a fresh ResourceModule with 1 available resource of each type",
   SECTION("When try to get a Pilot for a DateTime and one is available.") {
     CHECK(resourceModule.getAllFlights().size() == 0);
     DateTime someTime = DateTime(2000, 1, 1, 1, 00, 00);
-    Pilot *somePilot = resourceModule.getAvailablePilot(someTime);
+    vector<Pilot *> somePilots = resourceModule.getAvailablePilot(someTime);
     THEN("We get the request pilot") {
-      REQUIRE(somePilot->getResourceId() == pilotA->getResourceId());
+      REQUIRE(somePilots.size() == 1);
+      REQUIRE(somePilots[0]->getResourceId() == pilotA->getResourceId());
     }
   };
 
   SECTION("When try to get a Steward for a DateTime and one is available.") {
     CHECK(resourceModule.getAllFlights().size() == 0);
     DateTime someTime = DateTime(2000, 1, 1, 1, 00, 00);
-    Steward *someSteward = resourceModule.getAvailableSteward(someTime);
+    vector<Steward *> someStewards = resourceModule.getAvailableSteward(someTime);
     THEN("We get the request steward") {
-      REQUIRE(someSteward->getResourceId() == stewardA->getResourceId());
+      REQUIRE(someStewards.size() == 1);
+      REQUIRE(someStewards[0]->getResourceId() == stewardA->getResourceId());
     }
   };
 
@@ -134,7 +136,7 @@ TEST_CASE("Given a fresh ResourceModule with 1 unavailable resource",
     SECTION("When free a Flight.") {
       resourceModule.freeFlight(flight);
       THEN("Can use its locked resources again") {
-        Pilot *returnedPilot = resourceModule.getAvailablePilot(someTime);
+        Pilot *returnedPilot = resourceModule.getAvailablePilot(someTime)[0];
       }
     };
   };
@@ -147,7 +149,7 @@ TEST_CASE("Given a fresh ResourceModule with 1 unavailable resource",
     SECTION("When free a Flight.") {
       resourceModule.freeFlight(flight);
       THEN("Can use its locked resources again") {
-        Steward *returnedSteward = resourceModule.getAvailableSteward(someTime);
+        Steward *returnedSteward = resourceModule.getAvailableSteward(someTime)[0];
       }
     };
   };

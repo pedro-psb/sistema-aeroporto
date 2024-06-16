@@ -3,13 +3,13 @@ project(hello_prj)
 
 file(GLOB SRC "src/*.cpp") # arquivos da nossa biblioteca
 file(GLOB SRC_TESTS "tests/*_test.cpp") # testes automatizados com catch2
-file(GLOB SRC_MOCKS "tests/mocks/*.cpp") # mocks/fixtures
 file(GLOB SRC_EXAMPLES "examples/*.cpp") # testes manuais c/ main
+# file(GLOB SRC_MOCKS "tests/mocks/*.cpp") # mocks/fixtures
 
 # adicionar bibliotecas
 add_library(catch lib/catch.cpp)
 add_library(mylib ${SRC})
-add_library(test_mocks ${SRC_MOCKS})
+# add_library(test_mocks ${SRC_MOCKS})
 
 
 # criar executavel dos testes automatizados. Linka com:

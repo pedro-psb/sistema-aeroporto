@@ -86,7 +86,7 @@ vector<Pilot*> ResourceModule::getAvailablePilot(DateTime dateTime) {
   };
 
   if(vectorPilots.size() == 0)
-    throw "piloto";
+    throw ResourceNotAvailableErrorMsg;
 
   return vectorPilots;
 };
@@ -108,7 +108,7 @@ vector<Steward*> ResourceModule::getAvailableSteward(DateTime dateTime) {
   };
 
   if(vectorStewards.size() == 0)
-    throw "aeromoca";
+    throw ResourceNotAvailableErrorMsg;
 
   return vectorStewards;
 };
