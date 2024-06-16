@@ -28,7 +28,6 @@ class BoardingCrew: public Resource {
 
         void setMainPilot(Pilot* mainPilot);
         void setCopilot(Pilot* copilot);
-        void setStewards(Steward* Stewards, int numStewards);
 
         /* Add a vector of Stewards all at once. */
         void addSteward(vector<Steward*> stewards);
